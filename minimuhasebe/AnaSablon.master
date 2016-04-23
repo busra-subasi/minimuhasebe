@@ -1,0 +1,77 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AnaSablon.master.cs" Inherits="AnaSablon" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="Content/minimuhasebe.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div class="wrap">
+            <style type="text/css">
+                #navbar > .container {
+                    width: 100%;
+                }
+
+                #navbar a {
+                    color: #ffffff !important;
+                }
+            </style>
+            <nav id="navbar" class="col-lg-12 container-fluid navbar-fixed-top navbar" style="background-color: #337ab7;" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/web/index.php">Mini Muhasebe</a>
+                    </div>
+                    <div id="navbar-collapse" class="collapse navbar-collapse">
+                        <ul id="w0" class="navbar-nav navbar-right nav">
+                            <li><a href="">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid" style="padding-top: 60px;">
+                <div class="col-lg-2">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li>Home
+                            <ul>
+                                <li><a href="">Customer</a></li>
+                                <li><a href="">Invoice Status</a></li>
+                                <li><a href="">Payment Transaction</a></li>                               
+                                <li><a href="">Product</a></li>
+                                <li><a href="">Sales Invoice</a></li>
+                                <li><a href="">Sales Invoice Item</a></li>                               
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-10">
+                    <div>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-left">&copy; My Company 2016</p>
+                <p class="pull-right">Powered by Asp.NET</p>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
