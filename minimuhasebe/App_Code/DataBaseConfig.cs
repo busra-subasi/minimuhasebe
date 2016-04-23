@@ -1,0 +1,181 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+
+/// <summary>
+/// Summary description for DataBaseConfig
+/// </summary>
+public class DataBaseConfig
+{
+    #region DatabaseProperty
+    protected SqlConnection oConnection = new SqlConnection(@"Data Source='MYDataBaseIP';Initial Catalog='DBname';User Id='username';Password='password';");
+    protected SqlDataAdapter oDataAdapter;
+    protected SqlCommand oCommand;
+    protected DataTable oDataTable;
+    protected SqlDataReader oDataReader;
+    #endregion
+
+    #region DatabaseFunction
+    protected bool DbOpen()
+    {
+        if (oConnection.State != ConnectionState.Open)
+        {
+            oConnection.Open();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    protected bool DbClose()
+    {
+        if (oConnection.State == ConnectionState.Open)
+        {
+            oConnection.Close();
+            return true;
+        }
+        else { return false; }
+    }
+    protected bool ExecuteCommand(SqlCommand oCommand)
+    {
+        try
+        {
+            DbOpen();
+            oConnection.BeginTransaction();
+            oCommand.Connection = this.oConnection;
+            oCommand.ExecuteNonQuery();
+            oConnection.BeginTransaction().Commit();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            oConnection.BeginTransaction().Rollback();
+            DbClose();
+            return false;
+        }
+    }
+    protected object ExecuteScaler(SqlCommand oCommand)
+    {
+        object Result = null;
+        DbOpen();
+        oCommand.Connection = this.oConnection;
+        Result = oCommand.ExecuteScalar();
+        DbClose();
+        return Result;
+    }
+    protected SqlDataReader ExecuteReader(SqlCommand oCommand)
+    {
+        DbOpen();
+        oCommand.Connection = this.oConnection;
+        oDataReader = oCommand.ExecuteReader();
+        return oDataReader;
+    }
+    protected DataTable FillDataTable(SqlCommand oCommand)
+    {
+        DbOpen();
+        oDataTable = new DataTable();
+        oCommand.Connection = this.oConnection;
+        oDataAdapter = new SqlDataAdapter(oCommand);
+        oDataAdapter.Fill(oDataTable);
+        DbClose();
+        return oDataTable;
+
+    }
+    #endregion
+
+    #region CRUDFunction
+    public bool Insert()
+    {
+        var PropertyList = this.GetType().GetProperties();
+        string InsertText = "INSERT INTO [TABLENAME] ([COLUMNS]) VALUES ([VALUES])";
+
+        string Columns = string.Empty;
+        string Values = string.Empty;
+        string TableName = this.GetType().Name;
+        oCommand = new SqlCommand();
+
+
+        foreach (var Property in PropertyList)
+        {
+            if (!Property.Name.Equals("Id") && Property.GetValue(this, null) != null && Property.GetValue(this, null).ToString() != "1.1.0001 00:00:00")
+            {
+                Columns = Columns + Property.Name + ",";
+                Values = Values + "@" + Property.Name + ",";
+                oCommand.Parameters.AddWithValue("@" + Property.Name, Property.GetValue(this, null));
+            }
+
+        }
+        if (Columns.IndexOf(',') > -1) { Columns = Columns.Substring(0, Columns.Length - 1); }
+        if (Values.IndexOf(',') > -1) { Values = Values.Substring(0, Values.Length - 1); }
+
+        InsertText = InsertText.Replace("[TABLENAME]", TableName);
+        InsertText = InsertText.Replace("[COLUMNS]", Columns);
+        InsertText = InsertText.Replace("[VALUES]", Values);
+        oCommand.CommandText = InsertText;
+        return this.ExecuteCommand(oCommand);
+    }
+    public bool Update()
+    {
+        var PropList = this.GetType().GetProperties();
+        if (Convert.ToInt64(PropList[0].GetValue(this, null)) == 0)
+        {
+            return false;
+        }
+        else
+        {
+            string UpdateText = "UPDATE [TABLENAME] SET [COLUMNSVALUES] WHERE " + PropList[0].Name + "=" + PropList[0].GetValue(this, null);
+            string ColumnsValues = string.Empty;
+            string TableName = this.GetType().Name;
+            oCommand = new SqlCommand();
+            foreach (var Property in PropList)
+            {
+                if (!Property.Name.Equals("Id"))
+                {
+                    ColumnsValues += Property.Name + "=@" + Property.Name + ",";
+                    oCommand.Parameters.AddWithValue("@" + Property.Name, Property.GetValue(this, null));
+                }
+
+            }
+            if (ColumnsValues.IndexOf(',') > -1) { ColumnsValues = ColumnsValues.Substring(0, ColumnsValues.Length - 1); }
+
+            UpdateText = UpdateText.Replace("[TABLENAME]", TableName);
+            UpdateText = UpdateText.Replace("[COLUMNSVALUES]", ColumnsValues);
+            oCommand.CommandText = UpdateText;
+
+            return this.ExecuteCommand(oCommand);
+
+        }
+
+    }
+    public bool Delete()
+    {
+        var PropList = this.GetType().GetProperties();
+        string DeleteText = "DELETE FROM " + this.GetType().Name + " WHERE Id=" + PropList[0].GetValue(this, null);
+        return this.ExecuteCommand(new SqlCommand { CommandText = DeleteText });
+    }
+
+    public DataTable SelectById()
+    {
+        var PropertyList = this.GetType().GetProperties();
+        oCommand = new SqlCommand("Select * From" + this.GetType().Name + " where Id=" + PropertyList[0].GetValue(this, null));
+        return this.FillDataTable(oCommand);
+    }
+    public DataTable SelectAll()
+    {
+        oCommand = new SqlCommand("Select * from " + this.GetType().Name);
+        return this.FillDataTable(oCommand);
+    }
+    public DataTable SelectAllFilterByColoumn(object Coloumn, object Value)
+    {
+        oCommand = new SqlCommand("Select * from " + this.GetType().Name + " where " + Coloumn + "=@" + Coloumn);
+        oCommand.Parameters.AddWithValue("@" + Coloumn, Value);
+        return this.FillDataTable(oCommand);
+    }
+    #endregion
+
+
+}
