@@ -11,7 +11,9 @@ using System.Web;
 public class DataBaseConfig
 {
     #region DatabaseProperty
-    protected SqlConnection oConnection = new SqlConnection(@"Data Source='MYDataBaseIP';Initial Catalog='DBname';User Id='username';Password='password';");
+    //protected SqlConnection oConnection = new SqlConnection(@"Data Source='MYDataBaseIP';Initial Catalog='DBname';User Id='username';Password='password';");
+    protected SqlConnection oConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\muratcelikVM\Documents\GitHub\minimuhasebe\minimuhasebe\App_Data\minimuhasebeDB.mdf;Integrated Security=True");
+
     protected SqlDataAdapter oDataAdapter;
     protected SqlCommand oCommand;
     protected DataTable oDataTable;
@@ -42,21 +44,12 @@ public class DataBaseConfig
     }
     protected bool ExecuteCommand(SqlCommand oCommand)
     {
-        try
-        {
-            DbOpen();
-            oConnection.BeginTransaction();
-            oCommand.Connection = this.oConnection;
-            oCommand.ExecuteNonQuery();
-            oConnection.BeginTransaction().Commit();
-            return true;
-        }
-        catch (Exception ex)
-        {
-            oConnection.BeginTransaction().Rollback();
-            DbClose();
-            return false;
-        }
+        DbOpen();
+        oCommand.Connection = this.oConnection;
+        oCommand.ExecuteNonQuery();
+        DbClose();
+        return true;
+
     }
     protected object ExecuteScaler(SqlCommand oCommand)
     {

@@ -11,51 +11,44 @@
     <div class="customer-create">
         <h1>Create Customer</h1>
         <div class="customer-form">
-            <form id="w0" action="" method="post">                
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group field-customer-firstname required">
                             <label class="control-label" for="customer-firstname">Firstname</label>
-                            <input type="text" id="customer-firstname" class="form-control" name="Customer[firstname]" maxlength="20">
-
+                            <asp:TextBox ID="Firstname" runat="server" class="form-control" maxlength="20"></asp:TextBox>
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group field-customer-lastname required">
                             <label class="control-label" for="customer-lastname">Lastname</label>
-                            <input type="text" id="customer-lastname" class="form-control" name="Customer[lastname]" maxlength="20">
-
+                            <asp:TextBox ID="Lastname" runat="server" class="form-control" maxlength="20"></asp:TextBox>
                             <div class="help-block"></div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group field-customer-companyname required">
-                    <label class="control-label" for="customer-companyname">Company Name</label>
-                    <input type="text" id="customer-companyname" class="form-control" name="Customer[companyname]" maxlength="100">
-
+                    <label class="control-label" for="customer-companyname">Company Name</label>                    
+                    <asp:TextBox ID="Companyname" runat="server" class="form-control" maxlength="100"></asp:TextBox>
                     <div class="help-block"></div>
                 </div>
                 <div class="form-group field-customer-address required">
-                    <label class="control-label" for="customer-address">Address</label>
-                    <textarea id="customer-address" class="form-control" name="Customer[address]" rows="6"></textarea>
-
+                    <label class="control-label" for="customer-addres">Addres</label>
+                    <asp:TextBox ID="Addres" runat="server"  TextMode="MultiLine" class="form-control" rows="6"></asp:TextBox>
                     <div class="help-block"></div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group field-customer-tax_office required">
                             <label class="control-label" for="customer-tax_office">Tax Office</label>
-                            <input type="text" id="customer-tax_office" class="form-control" name="Customer[tax_office]" maxlength="500">
-
+                            <asp:TextBox ID="Tax_Office" runat="server"  class="form-control"></asp:TextBox>
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group field-customer-tax_number required">
                             <label class="control-label" for="customer-tax_number">Tax Number</label>
-                            <input type="number" id="customer-tax_number" class="form-control" name="Customer[tax_number]">
-
+                            <asp:TextBox ID="Tax_Number" runat="server"  class="form-control" MaxLength="11"></asp:TextBox>
                             <div class="help-block"></div>
                         </div>
                     </div>
@@ -65,24 +58,21 @@
                     <div class="col-xs-6">
                         <div class="form-group field-customer-email required">
                             <label class="control-label" for="customer-email">Email</label>
-                            <input type="text" id="customer-email" class="form-control" name="Customer[email]" maxlength="20">
-
+                            <asp:TextBox ID="Email" runat="server"  class="form-control"></asp:TextBox>
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group field-customer-phone required">
                             <label class="control-label" for="customer-phone">Phone</label>
-                            <input type="phone" id="customer-phone" class="form-control" name="Customer[phone]" maxlength="50">
-
+                            <asp:TextBox ID="Phone" runat="server" class="form-control"></asp:TextBox>
                             <div class="help-block"></div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Create</button>
+                    <asp:Button ID="btnCreateCustomer" runat="server" Text="Create"  class="btn btn-success" OnClick="btnCreateCustomer_Click" />                   
                 </div>
-            </form>
         </div>
     </div>
 </asp:Content>
