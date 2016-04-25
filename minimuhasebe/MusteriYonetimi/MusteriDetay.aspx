@@ -1,28 +1,33 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AnaSablon.master" AutoEventWireup="true" CodeFile="MusteriDetay.aspx.cs" Inherits="MusteriYonetimi_MusteriDetay" %>
-
+<%@ Import Namespace="System.Data.SqlClient" %>
+<%@ Import Namespace="System.Data" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <% Customer oCustomer = new Customer();
+        DataBaseConfig db = new DataBaseConfig();
+        db.oCommand = new SqlCommand("Select * from Customer where Id = "+Request.QueryString["Id"]);
+
+        SqlDataReader reader = db.ExecuteReader(db.oCommand);
+        if (reader.Read()) { 
+
+         %>
     <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Customers</a></li>
-        <li class="active">7</li>
+        <li><a href="/Default.aspx">AnaSayfa</a></li>
+        <li><a href="MusteriListe.aspx">Müşteriler</a></li>
+        <li class="active"><%=reader["Id"] %></li>
     </ul>
-    <h1>Sanko Group 
-        <p class="pull-right">
-            <a class="btn btn-primary" href="">Update</a>
-            <a class="btn btn-danger" href=""  data-method="post">Delete</a>
-        </p>
-    </h1>
+    
+    <h1><%=reader["Companyname"] %> </h1>
     <table id="w0" class="table table-striped table-bordered detail-view">
         <tbody>
             <tr>
                 <th>Id Customer</th>
-                <td>7</td>
+                <td><%=reader["Id"] %></td>
             </tr>
             <tr>
                 <th>Firstname</th>
-                <td>deneme</td>
+                <td><%=reader["Firstname"] %></td>
             </tr>
             <tr>
                 <th>Lastname</th>
@@ -30,38 +35,35 @@
             </tr>
             <tr>
                 <th>Company Name</th>
-                <td>test</td>
+                <td><%=reader["Companyname"] %></td>
             </tr>
             <tr>
                 <th>Tax Number</th>
-                <td>1231231</td>
+                <td><%=reader["Tax_Number"] %></td>
             </tr>
             <tr>
                 <th>Tax Office</th>
-                <td>office</td>
+                <td><%=reader["Tax_Office"] %></td>
             </tr>
             <tr>
-                <th>Address</th>
-                <td>adres</td>
+                <th>Addres</th>
+                <td><%=reader["Addres"] %></td>
             </tr>
             <tr>
                 <th>Email</th>
-                <td><a href="mailto:easd@asda.com">easd@asda.com</a></td>
+                <td><a href="<%=reader["Email"] %>"><%=reader["Email"] %></a></td>
             </tr>
             <tr>
                 <th>Phone</th>
-                <td>1231231231</td>
+                <td><%=reader["Phone"] %></td>
             </tr>
             <tr>
                 <th>Create At</th>
-                <td><span class="not-set">(not set)</span></td>
-            </tr>
-            <tr>
-                <th>Update At</th>
-                <td><span class="not-set">(not set)</span></td>
+                <td><span class="not-set"><%=reader["Create_At"] %></span></td>
             </tr>
         </tbody>
     </table>
+    <%} %>
     <h1 class="text-primary">test        
         <span style="font-size: 20px; color: #000000">Payment Transactions</span>
     </h1>

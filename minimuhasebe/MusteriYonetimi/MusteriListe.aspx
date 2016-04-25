@@ -60,13 +60,13 @@
                         <td><%=dt.Rows[i]["Tax_Number"].ToString() %></td>
                         <td><%=dt.Rows[i]["Tax_Office"].ToString() %></td>
                         <td>
-                            <a href="#">
+                            <a href="MusteriDetay.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
                             <a href="#" title="Update">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a href="#" title="Delete">
+                            <a href="MusteriListe.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Delete">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>
                         </td>

@@ -11,17 +11,17 @@ using System.Web;
 public class DataBaseConfig
 {
     #region DatabaseProperty
-    //protected SqlConnection oConnection = new SqlConnection(@"Data Source='MYDataBaseIP';Initial Catalog='DBname';User Id='username';Password='password';");
-    protected SqlConnection oConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\muratcelikVM\Documents\GitHub\minimuhasebe\minimuhasebe\App_Data\minimuhasebeDB.mdf;Integrated Security=True");
+    //public SqlConnection oConnection = new SqlConnection(@"Data Source='MYDataBaseIP';Initial Catalog='DBname';User Id='username';Password='password';");
+    public SqlConnection oConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\muratcelikVM\Documents\GitHub\minimuhasebe\minimuhasebe\App_Data\minimuhasebeDB.mdf;Integrated Security=True");
 
-    protected SqlDataAdapter oDataAdapter;
-    protected SqlCommand oCommand;
-    protected DataTable oDataTable;
-    protected SqlDataReader oDataReader;
+    public SqlDataAdapter oDataAdapter;
+    public SqlCommand oCommand;
+    public DataTable oDataTable;
+    public SqlDataReader oDataReader;
     #endregion
 
     #region DatabaseFunction
-    protected bool DbOpen()
+    public bool DbOpen()
     {
         if (oConnection.State != ConnectionState.Open)
         {
@@ -33,7 +33,7 @@ public class DataBaseConfig
             return false;
         }
     }
-    protected bool DbClose()
+    public bool DbClose()
     {
         if (oConnection.State == ConnectionState.Open)
         {
@@ -42,7 +42,7 @@ public class DataBaseConfig
         }
         else { return false; }
     }
-    protected bool ExecuteCommand(SqlCommand oCommand)
+    public bool ExecuteCommand(SqlCommand oCommand)
     {
         DbOpen();
         oCommand.Connection = this.oConnection;
@@ -51,7 +51,7 @@ public class DataBaseConfig
         return true;
 
     }
-    protected object ExecuteScaler(SqlCommand oCommand)
+    public object ExecuteScaler(SqlCommand oCommand)
     {
         object Result = null;
         DbOpen();
@@ -60,14 +60,14 @@ public class DataBaseConfig
         DbClose();
         return Result;
     }
-    protected SqlDataReader ExecuteReader(SqlCommand oCommand)
+    public SqlDataReader ExecuteReader(SqlCommand oCommand)
     {
         DbOpen();
         oCommand.Connection = this.oConnection;
         oDataReader = oCommand.ExecuteReader();
         return oDataReader;
     }
-    protected DataTable FillDataTable(SqlCommand oCommand)
+    public DataTable FillDataTable(SqlCommand oCommand)
     {
         DbOpen();
         oDataTable = new DataTable();
