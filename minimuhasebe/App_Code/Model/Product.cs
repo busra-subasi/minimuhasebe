@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for Product
 /// </summary>
-public class Product
+public class Product :DataBaseConfig
 {
     public Product()
     {
