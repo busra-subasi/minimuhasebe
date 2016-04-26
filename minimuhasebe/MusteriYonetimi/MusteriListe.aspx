@@ -5,25 +5,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li class="active">Customers</li>
+        <li><a href="#">Anasayfa</a></li>
+        <li class="active">Müşteriler</li>
     </ul>
     <div class="customer-index">
-        <h1>Customers 
-        <span class="pull-right"><a class="btn btn-success" href="MusteriKayit.aspx">Create Customer</a></span>
+        <h1>Müşteriler 
+        <span class="pull-right"><a class="btn btn-success" href="MusteriKayit.aspx">Müşteri Kayıt</a></span>
         </h1>
         <div id="w0" class="grid-view">
-            <div class="summary">Showing <b>1-1</b> of <b>1</b> item.</div>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th><a href="#" data-sort="id_customer">Id Customer</a></th>
-                        <th><a href="#" data-sort="companyname">Company Name</a></th>
-                        <th><a href="#" data-sort="firstname">Firstname</a></th>
-                        <th><a href="#" data-sort="lastname">Lastname</a></th>
-                        <th><a href="#" data-sort="tax_number">Tax Number</a></th>
-                        <th><a href="#" data-sort="tax_office">Tax Office</a></th>
+                        <th><a href="#" data-sort="id_customer">Müşteri Id</a></th>
+                        <th><a href="#" data-sort="companyname">Şirket Adı</a></th>
+                        <th><a href="#" data-sort="firstname">Ad</a></th>
+                        <th><a href="#" data-sort="lastname">Soyad</a></th>
+                        <th><a href="#" data-sort="tax_number">Vergi Numarası</a></th>
+                        <th><a href="#" data-sort="tax_office">Vergi Bürosu</a></th>
                         <th class="action-column">&nbsp;</th>
                     </tr>
                     <tr id="w0-filters" class="filters">
@@ -60,13 +59,13 @@
                         <td><%=dt.Rows[i]["Tax_Number"].ToString() %></td>
                         <td><%=dt.Rows[i]["Tax_Office"].ToString() %></td>
                         <td>
-                            <a href="MusteriDetay.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>">
+                            <a href="MusteriDetay.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Göster">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
-                            <a href="#" title="Update">
+                            <a href="#" title="Düzenle">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
-                            <a href="MusteriListe.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Delete">
+                            <a href="MusteriListe.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Sil">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </a>
                         </td>

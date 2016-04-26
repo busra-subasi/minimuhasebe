@@ -15,28 +15,28 @@
         }
     </style>
     <ul id="quick_start" class="text-center">
-        <a class="glyphicon-class" href="#" title="New Sales Invoice">
+        <a class="glyphicon-class" href="#" title="Yeni Satış Faturası">
             <li><span class="glyphicon glyphicon-file text-primary"></span>
                 <br />
-                <p class="glyphicon-class">+ Sales Invoice  </p>
+                <p class="glyphicon-class">+ Satış Faturası  </p>
             </li>
         </a>
-        <a class="glyphicon-class" href="#" title="New Customer">
+        <a class="glyphicon-class" href="#" title="Yeni Müşteri">
             <li><span class="glyphicon glyphicon-user text-primary"></span>
                 <br />
-                <p class="glyphicon-class">+ Customer  </p>
+                <p class="glyphicon-class">+ Müşteri  </p>
             </li>
         </a>
-        <a class="glyphicon-class" href="#" title="New Product">
+        <a class="glyphicon-class" href="#" title="Yeni Ürün">
             <li><span class="glyphicon glyphicon-bookmark text-primary"></span>
                 <br />
-                <p class="glyphicon-class">+ Product  </p>
+                <p class="glyphicon-class">+ Ürün  </p>
             </li>
         </a>
-        <a class="glyphicon-class" href="#" title="New Payment Transaction">
+        <a class="glyphicon-class" href="#" title="Yeni Ödeme İşlemi">
             <li><span class="glyphicon glyphicon-usd text-primary"></span>
                 <br />
-                <p class="glyphicon-class">+ Payment  </p>
+                <p class="glyphicon-class">+ Ödeme  </p>
             </li>
         </a>
     </ul>

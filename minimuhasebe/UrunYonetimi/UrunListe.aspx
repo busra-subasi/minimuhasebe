@@ -17,13 +17,13 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th><a href="#" >Id Product</a></th>
-                        <th><a href="#" >Name</a></th>
-                        <th><a href="#" >Price</a></th>
-                        <th><a href="#" >Tax Rate</a></th>
-                        <th><a href="#" >Quantity</a></th>
-                        <th><a href="#" >Create_At</a></th>
-                        <th><a href="#" >Decription</a></th>
+                        <th><a href="#" >Ürün Id</a></th>
+                        <th><a href="#" >İsim</a></th>
+                        <th><a href="#" >Fiyat</a></th>
+                        <th><a href="#" >Vergi Kuru</a></th>
+                        <th><a href="#" >Miktar</a></th>
+                        <th><a href="#" >Kayıt Tarihi</a></th>
+                        <th><a href="#" >Tanım</a></th>
                         <th class="action-column">&nbsp;</th>
                     </tr>
                     <tr id="w0-filters" class="filters">

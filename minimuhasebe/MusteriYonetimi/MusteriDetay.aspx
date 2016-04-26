@@ -9,9 +9,7 @@
         db.oCommand = new SqlCommand("Select * from Customer where Id = "+Request.QueryString["Id"]);
 
         SqlDataReader reader = db.ExecuteReader(db.oCommand);
-        if (reader.Read()) { 
-
-         %>
+        if (reader.Read()) {  %>
     <ul class="breadcrumb">
         <li><a href="/Default.aspx">AnaSayfa</a></li>
         <li><a href="MusteriListe.aspx">Müşteriler</a></li>
@@ -22,61 +20,61 @@
     <table id="w0" class="table table-striped table-bordered detail-view">
         <tbody>
             <tr>
-                <th>Id Customer</th>
+                <th>Müşteri Id</th>
                 <td><%=reader["Id"] %></td>
             </tr>
             <tr>
-                <th>Firstname</th>
+                <th>Ad</th>
                 <td><%=reader["Firstname"] %></td>
             </tr>
             <tr>
-                <th>Lastname</th>
+                <th>Soyad</th>
                 <td>deneme</td>
             </tr>
             <tr>
-                <th>Company Name</th>
+                <th>Şirket Adı</th>
                 <td><%=reader["Companyname"] %></td>
             </tr>
             <tr>
-                <th>Tax Number</th>
+                <th>Vergi Numarası</th>
                 <td><%=reader["Tax_Number"] %></td>
             </tr>
             <tr>
-                <th>Tax Office</th>
+                <th>Vergi Bürosu</th>
                 <td><%=reader["Tax_Office"] %></td>
             </tr>
             <tr>
-                <th>Addres</th>
+                <th>Adres</th>
                 <td><%=reader["Addres"] %></td>
             </tr>
             <tr>
-                <th>Email</th>
+                <th>E-mail</th>
                 <td><a href="<%=reader["Email"] %>"><%=reader["Email"] %></a></td>
             </tr>
             <tr>
-                <th>Phone</th>
+                <th>Tel.No</th>
                 <td><%=reader["Phone"] %></td>
             </tr>
             <tr>
-                <th>Create At</th>
+                <th>Kayıt Tarihi</th>
                 <td><span class="not-set"><%=reader["Create_At"] %></span></td>
             </tr>
         </tbody>
     </table>
     <%} %>
     <h1 class="text-primary">test        
-        <span style="font-size: 20px; color: #000000">Payment Transactions</span>
+        <span style="font-size: 20px; color: #000000">Ödeme İşlemleri</span>
     </h1>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>#</th>
-                <th><a>User Name</a></th>
-                <th><a>Payment Type</a></th>
-                <th><a>Period Name</a></th>
-                <th><a ">Create At</a></th>
-                <th><a data-sort="description">Description</a></th>
-                <th><a data-sort="amount">Amount</a></th>
+                <th><a>Kullanıcı Adı</a></th>
+                <th><a>Ödeme Tipi</a></th>
+                <th><a>Dönem Adı</a></th>
+                <th><a ">Kayıt Tarihi</a></th>
+                <th><a data-sort="description">Tanım</a></th>
+                <th><a data-sort="amount">Tutar</a></th>
             </tr>
         </thead>
         <tbody>
@@ -88,7 +86,7 @@
                 </td>
                 <td>2005</td>
                 <td>2016-04-14 16:51:07</td>
-                <td>Sales Invoice  =190</td>
+                <td>Satış Faturası  =190</td>
                 <td>1260.0000</td>
             </tr>
             <tr data-key="36">
@@ -99,7 +97,7 @@
                 </td>
                 <td>2005</td>
                 <td>2016-04-14 16:59:49</td>
-                <td>Sales Invoice  =191</td>
+                <td>Satış Faturası  =191</td>
                 <td>6251.7000</td>
             </tr>
             <tr data-key="37">
@@ -118,17 +116,17 @@
 
     <table class="pull-right" style="font-size: 15px;">
         <tbody><tr>
-            <td>Total Dept </td>
+            <td>Toplam Bölüm </td>
             <td>:</td>
             <td class="bg-danger">-7511.7</td>
         </tr>
         <tr>
-            <td>Total Pay</td>
+            <td>Toplam Ödeme</td>
             <td>:</td>
             <td class="bg-info">200 </td>
         </tr>
         <tr>
-            <td>Grand Total</td>
+            <td>Genel toplam</td>
             <td>:</td>
             <td class="bg-success">-7311.7 </td>
         </tr>

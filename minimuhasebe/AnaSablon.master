@@ -38,7 +38,7 @@
                     </div>
                     <div id="navbar-collapse" class="collapse navbar-collapse">
                         <ul id="w0" class="navbar-nav navbar-right nav">
-                            <li><a href="">Login</a></li>
+                            <li><a href="">Giriş</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,14 +46,14 @@
             <div class="container-fluid" style="padding-top: 60px;">
                 <div class="col-lg-2">
                     <ul class="nav nav-pills nav-stacked">
-                        <li>Home
+                        <li>Anasayfa
                             <ul>
-                                <li><a href="">Customer</a></li>
-                                <li><a href="">Invoice Status</a></li>
-                                <li><a href="">Payment Transaction</a></li>                               
-                                <li><a href="">Product</a></li>
-                                <li><a href="">Sales Invoice</a></li>
-                                <li><a href="">Sales Invoice Item</a></li>                               
+                                <li><a href="/MusteriYonetimi/MusteriListe.aspx">Müşteriler</a></li>
+                                <li><a href="">Fatura Statüsü</a></li>
+                                <li><a href="">Ödeme İşlemleri</a></li>                               
+                                <li><a href="/UrunYonetimi/UrunListe.aspx">Ürün</a></li>
+                                <li><a href="">Satış Faturaları</a></li>
+                                <li><a href="">Satış Faturası Kalemleri</a></li>                               
                             </ul>
                         </li>
                     </ul>
@@ -68,8 +68,8 @@
         </div>
         <footer class="footer">
             <div class="container">
-                <p class="pull-left">&copy; My Company 2016</p>
-                <p class="pull-right">Powered by Asp.NET</p>
+                <p class="pull-left">&copy; Şirket 2016</p>
+                <p class="pull-right">Asp.NET tabanlıdır.</p>
             </div>
         </footer>
     </form>
