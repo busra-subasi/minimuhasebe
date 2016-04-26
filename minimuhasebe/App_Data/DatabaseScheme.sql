@@ -1,10 +1,9 @@
 ﻿CREATE TABLE Users (
     Id int PRIMARY KEY identity(1,1),
-	Username varchar(255) ,
 	Email varchar(128),
+	Password varchar(128),
 	Fullname varchar(128),
-	Superadmin int DEFAULT 0,
-	Created_At int,
+	Created_At date,
 )
 CREATE TABLE Customer (
   Id int PRIMARY KEY identity(1,1),

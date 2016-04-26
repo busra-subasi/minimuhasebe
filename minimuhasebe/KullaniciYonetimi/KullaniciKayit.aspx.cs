@@ -11,4 +11,15 @@ public partial class KullaniciYonetimi_KullaniciKayit : System.Web.UI.Page
     {
 
     }
+
+    protected void btnCreateUser_Click(object sender, EventArgs e)
+    {
+        Users oUser = new Users();
+        oUser.Fullname = Fullname.Text;
+        oUser.Email = Email.Text;
+        oUser.Password = Password.Text;
+        oUser.Created_At = DateTime.Now;
+        oUser.Insert();
+        Response.Redirect("KullaniciListe.aspx");
+    }
 }

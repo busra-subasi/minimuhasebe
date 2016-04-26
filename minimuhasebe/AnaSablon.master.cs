@@ -9,6 +9,16 @@ public partial class AnaSablon : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["Id"]==null || Session["Id"]=="") {
 
+            Response.Redirect("/Login.aspx");
+        }
+    }
+
+    protected void btnLogout_Click(object sender, EventArgs e)
+    {
+        Session["Id"] = null;
+        Session.Abandon();
+        Response.Redirect("/Login.aspx");
     }
 }

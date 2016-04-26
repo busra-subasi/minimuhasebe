@@ -38,7 +38,7 @@
                     </div>
                     <div id="navbar-collapse" class="collapse navbar-collapse">
                         <ul id="w0" class="navbar-nav navbar-right nav">
-                            <li><a href="">Giriş</a></li>
+                            <li><asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click">Çıkış</asp:LinkButton></li>
                         </ul>
                     </div>
                 </div>
@@ -53,7 +53,8 @@
                                 <li><a href="">Ödeme İşlemleri</a></li>                               
                                 <li><a href="/UrunYonetimi/UrunListe.aspx">Ürün</a></li>
                                 <li><a href="">Satış Faturaları</a></li>
-                                <li><a href="">Satış Faturası Kalemleri</a></li>                               
+                                <li><a href="">Satış Faturası Kalemleri</a></li> 
+                                <li><a href="KullaniciYonetimi/KullaniciListe.aspx">Kullanıcı Yönetimi</a></li>                              
                             </ul>
                         </li>
                     </ul>
