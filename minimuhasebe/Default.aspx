@@ -15,25 +15,25 @@
         }
     </style>
     <ul id="quick_start" class="text-center">
-        <a class="glyphicon-class" href="#" title="Yeni Satış Faturası">
+        <a class="glyphicon-class" href="/FinansYonetimi/FaturaKayit.aspx" title="Yeni Satış Faturası">
             <li><span class="glyphicon glyphicon-file text-primary"></span>
                 <br />
                 <p class="glyphicon-class">+ Satış Faturası  </p>
             </li>
         </a>
-        <a class="glyphicon-class" href="#" title="Yeni Müşteri">
+        <a class="glyphicon-class" href="/MusteriYonetimi/MusteriKayit.aspx" title="Yeni Müşteri">
             <li><span class="glyphicon glyphicon-user text-primary"></span>
                 <br />
                 <p class="glyphicon-class">+ Müşteri  </p>
             </li>
         </a>
-        <a class="glyphicon-class" href="#" title="Yeni Ürün">
+        <a class="glyphicon-class" href="/UrunYonetimi/UrunKayit.aspx" title="Yeni Ürün">
             <li><span class="glyphicon glyphicon-bookmark text-primary"></span>
                 <br />
                 <p class="glyphicon-class">+ Ürün  </p>
             </li>
         </a>
-        <a class="glyphicon-class" href="#" title="Yeni Ödeme İşlemi">
+        <a class="glyphicon-class" href="/FinansYonetimi/YeniOdeme.aspx" title="Yeni Ödeme İşlemi">
             <li><span class="glyphicon glyphicon-usd text-primary"></span>
                 <br />
                 <p class="glyphicon-class">+ Ödeme  </p>

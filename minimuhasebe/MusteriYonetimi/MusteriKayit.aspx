@@ -4,8 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <ul class="breadcrumb">
-        <li><a href="/web/index.php">Anasayfa</a></li>
-        <li><a href="/web/index.php?r=customer%2Findex">Müşteriler</a></li>
+        <li><a href="/Default.aspx">Anasayfa</a></li>
+        <li><a href="/MusteriYonetimi/MusteriListe.aspx">Müşteriler</a></li>
         <li class="active">Müşteri Kayıt</li>
     </ul>
     <div class="customer-create">

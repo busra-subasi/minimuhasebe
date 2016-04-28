@@ -70,10 +70,10 @@ public class DataBaseConfig
     public DataTable FillDataTable(SqlCommand oCommand)
     {
         DbOpen();
-        oDataTable = new DataTable();
+        this.oDataTable = new DataTable();
         oCommand.Connection = this.oConnection;
         oDataAdapter = new SqlDataAdapter(oCommand);
-        oDataAdapter.Fill(oDataTable);
+        oDataAdapter.Fill(this.oDataTable);
         DbClose();
         return oDataTable;
 

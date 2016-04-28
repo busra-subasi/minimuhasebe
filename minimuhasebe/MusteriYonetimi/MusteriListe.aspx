@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <ul class="breadcrumb">
-        <li><a href="#">Anasayfa</a></li>
+        <li><a href="/Default.aspx">Anasayfa</a></li>
         <li class="active">Müşteriler</li>
     </ul>
     <div class="customer-index">
