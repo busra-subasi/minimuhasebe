@@ -6,7 +6,7 @@ using System.Web;
 /// <summary
 /// Summary description for SalesInvoice
 /// </summary
-public class SalesInvoice
+public class SalesInvoice:DataBaseConfig
 {
     public SalesInvoice()
     {

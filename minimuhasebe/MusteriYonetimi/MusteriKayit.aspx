@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <asp:Button ID="btnCreateCustomer" runat="server" Text="Create"  class="btn btn-success" OnClick="btnCreateCustomer_Click" />                   
+                    <asp:Button ID="btnCreateCustomer" runat="server" Text="Oluştur"  class="btn btn-success" OnClick="btnCreateCustomer_Click" />                   
                 </div>
         </div>
     </div>

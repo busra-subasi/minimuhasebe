@@ -4,19 +4,19 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <ul class="breadcrumb">
-        <li><a href="/Default.aspx">Home</a></li>
+        <li><a href="/Default.aspx">Anasayfa</a></li>
         <li><a href="/FinansYonetimi/FaturaListe.aspx">Satış Faturaları</a></li>
         <li class="active">Yeni Fatura</li>
     </ul>
     <div class="sales-invoice-create">
         <form id="sales-invoice-create-form" action="/web/index.php?r=salesinvoice%2Fcreate" method="post">
-            <input type="hidden" name="_csrf" value="OGpWVzY1cnhtOQR6QWELDlEzEWRzUDg0Ulg1DwIHQEBcBwMFAHwrPg=="><h1>Create Sales Invoice </h1>
+            <input type="hidden" name="_csrf" value="OGpWVzY1cnhtOQR6QWELDlEzEWRzUDg0Ulg1DwIHQEBcBwMFAHwrPg=="><h1>Satış Faturası Talebi </h1>
 
             <div class="sales-invoice-form">
                 <div class="form-group field-salesinvoice-id_customer required has-success">
 
                     <select id="salesinvoice-id_customer" class="form-control select2-hidden-accessible" name="SalesInvoice[id_customer]" onchange="onCustomerChange(this.value)"  >
-                        <option value="">Select a Customer ...</option>
+                        <option value="">Müşteri Seçimi ...</option>
                         <option value="7">test</option>
                     </select>
                     <div class="help-block"></div>
@@ -24,16 +24,16 @@
                 <div class="form-group field-salesinvoice-id_invoice_status required">
 
                     <select id="salesinvoice-id_invoice_status" class="form-control select2-hidden-accessible" name="SalesInvoice[id_invoice_status]">
-                        <option value="1">Profor</option>
-                        <option value="2">Confirm</option>
-                        <option value="3">Print</option>
-                        <option value="4">Send</option>
+                        <option value="1">İşlem</option>
+                        <option value="2">Onayla</option>
+                        <option value="3">Yazdır</option>
+                        <option value="4">Gönder</option>
                     </select>
                     <div class="help-block"></div>
                 </div>
                 <div class="form-group field-salesinvoice-description">
 
-                    <textarea id="salesinvoice-description" class="form-control" name="SalesInvoice[description]" rows="3" placeholder="description"></textarea>
+                    <textarea id="salesinvoice-description" class="form-control" name="SalesInvoice[description]" rows="3" placeholder="Tanım"></textarea>
 
                     <div class="help-block"></div>
                 </div>
@@ -42,40 +42,40 @@
                 <div id="form-hide-fields" class="row" style="">
                     <div class="col-xs-3">
                         <div class="form-group field-salesinvoice-tax_number required">
-                            <label class="control-label" for="salesinvoice-tax_number">Tax Number</label>
-                            <input type="text" id="salesinvoice-tax_number" class="form-control" name="SalesInvoice[tax_number]" readonly="" placeholder="Tax Number">
+                            <label class="control-label" for="salesinvoice-tax_number">Vergi Numarası</label>
+                            <input type="text" id="salesinvoice-tax_number" class="form-control" name="SalesInvoice[tax_number]" readonly="" placeholder="Vergi Numarası">
 
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="form-group field-salesinvoice-tax_office required">
-                            <label class="control-label" for="salesinvoice-tax_office">Tax Office</label>
-                            <input type="text" id="salesinvoice-tax_office" class="form-control" name="SalesInvoice[tax_office]" readonly="" placeholder="Tax Office">
+                            <label class="control-label" for="salesinvoice-tax_office">Vergi Bürosu</label>
+                            <input type="text" id="salesinvoice-tax_office" class="form-control" name="SalesInvoice[tax_office]" readonly="" placeholder="Vergi Bürosu">
 
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="form-group field-salesinvoice-total">
-                            <label class="control-label" for="salesinvoice-total">Total</label>
-                            <input type="text" id="salesinvoice-total" class="form-control" name="SalesInvoice[total]" readonly="" placeholder="Total">
+                            <label class="control-label" for="salesinvoice-total">Toplam</label>
+                            <input type="text" id="salesinvoice-total" class="form-control" name="SalesInvoice[total]" readonly="" placeholder="Toplam">
 
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="form-group field-salesinvoice-taxtotal">
-                            <label class="control-label" for="salesinvoice-taxtotal">Taxtotal</label>
-                            <input type="text" id="salesinvoice-taxtotal" class="form-control" name="SalesInvoice[taxtotal]" readonly="" placeholder="Tax Total">
+                            <label class="control-label" for="salesinvoice-taxtotal">Toplam Vergi</label>
+                            <input type="text" id="salesinvoice-taxtotal" class="form-control" name="SalesInvoice[taxtotal]" readonly="" placeholder="Toplam Vergi">
 
                             <div class="help-block"></div>
                         </div>
                     </div>
                     <div class="col-xs-2">
                         <div class="form-group field-salesinvoice-grandtotal">
-                            <label class="control-label" for="salesinvoice-grandtotal">Grandtotal</label>
-                            <input type="text" id="salesinvoice-grandtotal" class="form-control" name="SalesInvoice[grandtotal]" readonly="" placeholder="Grand Total">
+                            <label class="control-label" for="salesinvoice-grandtotal">Genel Toplam</label>
+                            <input type="text" id="salesinvoice-grandtotal" class="form-control" name="SalesInvoice[grandtotal]" readonly="" placeholder="Genel Toplam">
 
                             <div class="help-block"></div>
                         </div>
@@ -85,21 +85,21 @@
                 <table id="sales_invoice_item_list" class="table table-striped table-bordered" style="">
                     <thead>
                         <tr>
-                            <th><span>Id Product</span></th>
-                            <th><span>Product</span></th>
-                            <th><span>Quantity</span></th>
-                            <th><span>Price</span></th>
-                            <th><span>Tax Rate</span></th>
-                            <th><span>Total</span></th>
-                            <th><span>Tax Total</span></th>
-                            <th><span>Grand Total</span></th>
+                            <th><span>Ürün Id</span></th>
+                            <th><span>Ürün</span></th>
+                            <th><span>Miktar</span></th>
+                            <th><span>Fiyat</span></th>
+                            <th><span>Vergi Kuru</span></th>
+                            <th><span>Toplam</span></th>
+                            <th><span>Toplam Vergi</span></th>
+                            <th><span>Genel toplam</span></th>
                             <th><span></span></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr id="sales_invoice_item_6">
                             <td><span id="sales_invoice_item_id_6">6</span></td>
-                            <td><span id="sales_invoice_item_name_6">Product1</span></td>
+                            <td><span id="sales_invoice_item_name_6">Ürün1</span></td>
                             <td>
                                 <input id="sales_invoice_item_quantity_6" type="text" class="form-control" onkeyup="onValueChange(6)" value="1"></td>
                             <td>
@@ -145,20 +145,20 @@
                         <tr>
                             <td colspan="4">
                                 <select id="product_items" class="form-control select2-hidden-accessible" name="product_items">
-                                    <option value="">Select Product ...</option>
-                                    <option value="6">Product1</option>
+                                    <option value="">Ürün Seçimi ...</option>
+                                    <option value="6">Ürün1</option>
                                     <option value="7">Bilgisayar</option>
                                 </select>
                                  <td colspan="4">
                                 <input id="product_item_quantity" name="product_item_quantity" type="number" class="form-control" value="" onkeypress="if(event.keyCode==13){getProduct(); return true;}">
                             </td>
                             <td colspan="1">
-                                <input id="product_item_add" name="product_item_add" type="button" class="btn btn-success" value="Add Item" onclick="getProduct()">
+                                <input id="product_item_add" name="product_item_add" type="button" class="btn btn-success" value="Kalem ekle" onclick="getProduct()">
                             </td>
                         </tr>
                     </tfoot>
                 </table>
-                <button type="button" class="btn btn-success" onclick="onBeforeSubmit()">Create</button>
+                <button type="button" class="btn btn-success" onclick="onBeforeSubmit()">Düzenle</button>
             </div>
         </form>
 

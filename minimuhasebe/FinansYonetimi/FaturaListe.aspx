@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AnaSablon.master" AutoEventWireup="true" CodeFile="FaturaListe.aspx.cs" Inherits="FinansYonetimi_FaturaListe" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <%@ Import Namespace="System.Data" %>
+    <%@ Import Namespace="System.Data.SqlClient" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <ul class="breadcrumb">
@@ -11,26 +13,26 @@
         <h1>Satış Faturaları  
             <p class="pull-right">
                 <a class="btn btn-success" href="/FinansYonetimi/FaturaKayit.aspx">Yeni Fatura</a>
-                 <a class="btn btn-success" href="/FinansYonetimi/YeniOdeme.aspx">Yeni Ödeme</a>
+                <a class="btn btn-success" href="/FinansYonetimi/YeniOdeme.aspx">Yeni Ödeme</a>
 
             </p>
         </h1>
         <div id="w0" class="grid-view">
-           
+
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=id_sales_invoice" data-sort="id_sales_invoice">Id Sales Invoice</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=companyName" data-sort="companyName">Company Name</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=status" data-sort="status">Status</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=userName" data-sort="userName">User Name</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=create_at" data-sort="create_at">Create At</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=send_at" data-sort="send_at">Send At</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=total" data-sort="total">Total</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=taxtotal" data-sort="taxtotal">Taxtotal</a></th>
-                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=grandtotal" data-sort="grandtotal">Grandtotal</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=id_sales_invoice" data-sort="id_sales_invoice">Satış Faturası Id</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=companyName" data-sort="companyName">Şirket Adı</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=status" data-sort="status">Statü</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=userName" data-sort="userName">Kullanıcı Adı</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=create_at" data-sort="create_at">Kayıt Tarihi</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=total" data-sort="total">Toplam</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=taxtotal" data-sort="taxtotal">Toplam Vergi</a></th>
+                        <th><a href="/web/index.php?r=salesinvoice%2Findex&amp;sort=grandtotal" data-sort="grandtotal">Genel Toplam</a></th>
                         <th class="action-column">&nbsp;</th>
+                         <th class="action-column">&nbsp;</th>
                     </tr>
                     <tr id="w0-filters" class="filters">
                         <td>&nbsp;</td>
@@ -64,6 +66,32 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% 
+//SalesInvoice oSales = new SalesInvoice();
+//string sql = " Select *,u.Fullname as name";
+//sql = sql + "  from PaymentTransaction p";
+//sql = sql + "  INNER  JOIN Customer c ON p.Id_Customer=c.Id ";
+//sql = sql + "  INNER  JOIN Users u ON p.Id_User_Create=u.Id ";
+//oSales.oCommand = new SqlCommand(sql);
+//oSales.oDataTable = oSales.FillDataTable(oSales.oCommand);
+
+//for (int i = 0; i < oSales.oDataTable.Rows.Count; i++)
+//{
+                    %>
+                   <%-- <tr data-key="6">
+                        <td><%//i+1 %></td>
+                        <td><%//oSales.oDataTable.Rows[i]["Id"].ToString() %></td>
+                        <td><% //oSales.oDataTable.Rows[i]["Companyname "].ToString() %></td>
+                        <td><%//oSales.oDataTable.Rows[i]["Id_User_Create"].ToString() %></td>
+                        <td><%//=oSales.oDataTable.Rows[i]["Total"].ToString() %></td>
+                        <td><%//oSales.oDataTable.Rows[i]["Created_At"].ToString() %></td>
+                        <td>
+                            <a href="#" title="Update">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </td>--%>
+                    </tr>
+                    <%//}%>
                     <tr data-key="190">
                         <td>1</td>
                         <td>190</td>
@@ -75,7 +103,7 @@
                         <td>1200.0000</td>
                         <td>60.0000</td>
                         <td>1260.0000</td>
-                        <td><a href="/web/index.php?r=salesinvoice%2Fview&amp;id=190" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a><a href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=190" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a><a href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=190" title="Delete" aria-label="Delete" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a></td>
+                        <td><a href="/web/index.php?r=salesinvoice%2Fview&amp;id=190" title="Göster" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a><a href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=190" title="Düzenle" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a><a href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=190" title="Sil" aria-label="Delete" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a></td>
                     </tr>
                     <tr data-key="191">
                         <td>2</td>
@@ -88,7 +116,7 @@
                         <td>3240.0000</td>
                         <td>3011.7000</td>
                         <td>6251.7000</td>
-                        <td><a href="/web/index.php?r=salesinvoice%2Fview&amp;id=191" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a><a href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=191" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a><a href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=191" title="Delete" aria-label="Delete" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a></td>
+                        <td><a href="/web/index.php?r=salesinvoice%2Fview&amp;id=191" title="Göster" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a><a href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=191" title="Düzenle" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a><a href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=191" title="Sil" aria-label="Delete" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a></td>
                     </tr>
                     <tr data-key="192">
                         <td>3</td>
@@ -101,7 +129,7 @@
                         <td>3240.0000</td>
                         <td>3011.7000</td>
                         <td>6251.7000</td>
-                        <td><a href="/web/index.php?r=salesinvoice%2Fview&amp;id=192" title="View" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a><a href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=192" title="Update" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a><a href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=192" title="Delete" aria-label="Delete" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a></td>
+                        <td><a href="/web/index.php?r=salesinvoice%2Fview&amp;id=192" title="Göster" aria-label="View" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a><a href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=192" title="Düzenle" aria-label="Update" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a><a href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=192" title="Sil" aria-label="Delete" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a></td>
                     </tr>
                 </tbody>
             </table>

@@ -5,84 +5,84 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
    
         <ul class="breadcrumb">
-            <li><a href="/web/index.php">Home</a></li>
-            <li><a href="/web/index.php?r=salesinvoice%2Findex">Sales Invoices</a></li>
+            <li><a href="/web/index.php">Anasayfa</a></li>
+            <li><a href="/web/index.php?r=salesinvoice%2Findex">Satış Faturaları</a></li>
             <li class="active">191</li>
         </ul>
         <div class="sales-invoice-view">
             <h1>test       
                 <p class="pull-right">
-                    <a class="btn btn-default" href="/web/index.php?r=salesinvoice%2Fprint&amp;id=191">Print</a>            <a class="btn btn-success" href="/web/index.php?r=salesinvoice%2Fsend&amp;id=191">Send</a>
-                    <a class="btn btn-primary" href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=191">Update</a>            <a class="btn btn-danger" href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=191" data-confirm="Are you sure you want to delete this item?" data-method="post">Delete</a>
+                    <a class="btn btn-default" href="/web/index.php?r=salesinvoice%2Fprint&amp;id=191">Yazdır</a>            <a class="btn btn-success" href="/web/index.php?r=salesinvoice%2Fsend&amp;id=191">Gönder</a>
+                    <a class="btn btn-primary" href="/web/index.php?r=salesinvoice%2Fupdate&amp;id=191">Düzenle</a>            <a class="btn btn-danger" href="/web/index.php?r=salesinvoice%2Fdelete&amp;id=191" data-confirm="Are you sure you want to delete this item?" data-method="post">Sil</a>
                 </p>
             </h1>
             <table id="w0" class="table table-striped table-bordered detail-view">
                 <tbody>
                     <tr>
-                        <th>Id Sales Invoice</th>
+                        <th>Satış Faturası Id</th>
                         <td>191</td>
                     </tr>
                     <tr>
-                        <th>Company Name</th>
+                        <th>Şirket Adı</th>
                         <td>test</td>
                     </tr>
                     <tr>
-                        <th>Total</th>
+                        <th>Toplam</th>
                         <td>3240.0000</td>
                     </tr>
                     <tr>
-                        <th>Taxtotal</th>
+                        <th>Toplam Vergi</th>
                         <td>3011.7000</td>
                     </tr>
                     <tr>
-                        <th>Grandtotal</th>
+                        <th>Genel Toplam</th>
                         <td>6251.7000</td>
                     </tr>
                     <tr>
-                        <th>Tax Number</th>
+                        <th>Vergi Numarası</th>
                         <td>1231231</td>
                     </tr>
                     <tr>
-                        <th>Tax Office</th>
+                        <th>Vergi Bürosu</th>
                         <td>office</td>
                     </tr>
                     <tr>
-                        <th>Name</th>
+                        <th>Ad</th>
                         <td>Print</td>
                     </tr>
                     <tr>
-                        <th>Username</th>
+                        <th> Soyad</th>
                         <td>superadmin</td>
                     </tr>
                     <tr>
-                        <th>Create At</th>
+                        <th>Kayıt Tarihi</th>
                         <td>2016-04-14 13:00:01</td>
                     </tr>
                     <tr>
-                        <th>Send At</th>
+                        <th>Gönderme</th>
                         <td><span class="not-set">(not set)</span></td>
                     </tr>
                     <tr>
-                        <th>Description</th>
+                        <th>Tanım</th>
                         <td></td>
                     </tr>
                 </tbody>
             </table>
-            <h2>Sales Invoice Items</h2>
+            <h2>Satış Faturası Kalemleri</h2>
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th><span>Id Product</span></th>
-                        <th><span>Product</span></th>
-                        <th><span>Quantity</span></th>
-                        <th><span>Price</span></th>
-                        <th><span>Tax Rate</span></th>
+                        <th><span>Ürün Id</span></th>
+                        <th><span>Ürün</span></th>
+                        <th><span>Miktar</span></th>
+                        <th><span>Fiyat</span></th>
+                        <th><span>Vergi Kuru</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>6</td>
-                        <td>Product1</td>
+                        <td>Ürün1</td>
                         <td>2</td>
                         <td>120.0000</td>
                         <td>0.0500</td>

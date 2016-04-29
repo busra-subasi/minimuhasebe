@@ -16,7 +16,7 @@
                     <tr>
                         <th>#</th>
                         <th><a href="#" >Kullanıcı Id</a></th>
-                        <th><a href="#" >Ad Soayd</a></th>
+                        <th><a href="#" >Ad Soyad</a></th>
                         <th><a href="#" >Email</a></th>
                         <th><a href="#" >Şifre</a></th>
                         <th><a href="#" >Kayıt Tarihi</a></th>

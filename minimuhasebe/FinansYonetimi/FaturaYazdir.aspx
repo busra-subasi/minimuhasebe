@@ -31,25 +31,25 @@
                     <img src="" style="height:50px;width:250px;">
                     <br>
                     <hr>
-                    <p> <strong>Invoice No:</strong>191</p> 
+                    <p> <strong>Fatura No:</strong>191</p> 
                     <address>
                          
 
-                                                                                  <strong>Print Date:</strong>
+                                                                                  <strong>Tarihi yazdır:</strong>
                                 <p>2016-04-28 22:17:58</p>
                                                                        </address>
                     <address>
-                        <strong>Tax Office:</strong> <span>office </span>
+                        <strong>Vergi Bürosu:</strong> <span>office </span>
                         <br>
-                        <strong>Tax Number:</strong> <span>1231231 </span>
+                        <strong>Vergi Numarası:</strong> <span>1231231 </span>
                     </address>
                 </div>
                 <div class="col-xs-4 text-right pull-right">
                     <address>
                         <h3>test</h3>
-                            <strong>Address</strong>
+                            <strong>Adres</strong>
                             <p>adres</p>
-                            <strong>Phone</strong>
+                            <strong>Telefon</strong>
                             <p>1231231231</p>
                             <strong>Email</strong>
                             <p>easd@asda.com</p>
@@ -64,23 +64,23 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Invoice summary</strong></h3>
+                    <h3 class="panel-title"><strong>Fatura Özeti</strong></h3>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-condensed" style="font-size:12px;">
                             <thead>
                             <tr>
-                                <td><strong>Item</strong></td>
-                                <td class="text-center"><strong>Price</strong></td>
-                                <td class="text-center"><strong>Tax Rate</strong></td>
-                                <td class="text-center"><strong>Quantity</strong></td>
-                                <td class="text-right"><strong>Totals</strong></td>
+                                <td><strong>Kalem</strong></td>
+                                <td class="text-center"><strong>Fiyat</strong></td>
+                                <td class="text-center"><strong>Vergi Kuru</strong></td>
+                                <td class="text-center"><strong>Miktar</strong></td>
+                                <td class="text-right"><strong>Toplamlar</strong></td>
                             </tr>
                             </thead>
                             <tbody>
                                                             <tr>
-                                    <td>Product1</td>
+                                    <td>Ürün1</td>
                                     <td class="text-center">120.0000</td>
                                     <td class="text-center">0.0500</td>
                                     <td class="text-center">2</td>
@@ -101,20 +101,20 @@
                                     <table class="table table-condensed" style="font-size:12px;">
                                         <thead>
                                         <tr>
-                                            <td><strong>Result</strong></td>
+                                            <td><strong>Sonuç</strong></td>
                                             <td></td>
                                         </tr>
                                         </thead>
                                         <tr>
-                                            <td>Total :</td>
+                                            <td>Toplam :</td>
                                             <td class="text-right">3240.0000</td>
                                         </tr>
                                         <tr>
-                                            <td>Tax Total :</td>
+                                            <td>Toplam Vergi :</td>
                                             <td class="text-right">3011.7000</td>
                                         </tr>
                                         <tr>
-                                            <td>Grand Total :</td>
+                                            <td>Genel Toplam :</td>
                                             <td class="text-right">6251.7000</td>
                                         </tr>
                                     </table>

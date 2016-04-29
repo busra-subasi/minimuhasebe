@@ -79,7 +79,7 @@
             </tr>
         </thead>
         <tbody>
-            <% PaymentTransaction dbPayment = new PaymentTransaction();
+            <%  PaymentTransaction dbPayment = new PaymentTransaction();
                 dbPayment.oCommand = new SqlCommand("Select *,u.Fullname as name from PaymentTransaction p INNER JOIN Users u ON p.Id_User_Create=u.Id  where p.Id_Customer = " + Request.QueryString["Id"]);
                 dbPayment.oDataTable = dbPayment.FillDataTable(dbPayment.oCommand);
                 decimal TotalPaid = 0;
