@@ -19,9 +19,9 @@
                         <th>#</th>
                         <th><a href="#">Ürün Id</a></th>
                         <th><a href="#">İsim</a></th>
-                        <th><a href="#">Fiyat</a></th>
+                         <th><a href="#">Miktar</a></th>
                         <th><a href="#">Vergi Kuru</a></th>
-                        <th><a href="#">Miktar</a></th>
+                         <th><a href="#">Fiyat</a></th>
                         <th><a href="#">Kayıt Tarihi</a></th>
                         <th><a href="#">Tanım</a></th>
                         <th class="action-column">&nbsp;</th>
@@ -34,17 +34,18 @@
                         <td>
                             <input type="text" class="form-control" name="ProductSearch[name]">
                         </td>
-                        <td>
-                            <input type="text" class="form-control" name="ProductSearch[price]" disabled="disabled">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" name="ProductSearch[tax_rate]">
-                        </td>
+                        
                         <td>
                             <input type="text" class="form-control" name="ProductSearch[Quantity]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="ProductSearch[Create_At]">
+                            <input type="text" class="form-control" name="ProductSearch[tax_rate]">
+                        </td>
+                         <td>
+                            <input type="text" class="form-control" name="ProductSearch[price]">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" name="ProductSearch[Create_At]" disabled="disabled">
                         </td>
                         <td>
                             <input type="text" class="form-control" name="ProductSearch[Decription]" disabled="disabled">
@@ -63,9 +64,9 @@
                         <td><%=i+1 %></td>
                         <td><%=dt.Rows[i]["Id"].ToString() %></td>
                         <td><%=dt.Rows[i]["Name"].ToString() %></td>
-                        <td><%=dt.Rows[i]["Price"].ToString() %></td>
-                        <td><%=dt.Rows[i]["Tax_Rate"].ToString() %></td>
                         <td><%=dt.Rows[i]["Quantity"].ToString() %></td>
+                        <td><%=dt.Rows[i]["Tax_Rate"].ToString() %></td>
+                         <td><%=dt.Rows[i]["Price"].ToString() %></td>
                         <td><%=dt.Rows[i]["Create_At"].ToString() %></td>
                         <td><%=dt.Rows[i]["Decription"].ToString() %></td>
                         <td>
