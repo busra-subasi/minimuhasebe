@@ -22,26 +22,6 @@
                         <th><a href="#" >Kayıt Tarihi</a></th>
                         <th class="action-column">&nbsp;</th>
                     </tr>
-                    <tr id="w0-filters" class="filters">
-                        <td>&nbsp;</td>
-                        <td>
-                            <input type="text" class="form-control" name="ProductSearch[id_product]">
-
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" name="ProductSearch[name]">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" name="ProductSearch[price]">
-                        </td>
-                        <td>
-                            <input type="text" class="form-control" name="ProductSearch[tax_rate]">
-                        </td>
-                         <td>
-                            <input type="text" class="form-control" name="ProductSearch[Quantity]">
-                        </td>
-                        <td>&nbsp;</td>
-                    </tr>
                 </thead>
                 <tbody>
                     <% 
@@ -58,7 +38,7 @@
                         <td><%=dt.Rows[i]["Password"].ToString() %></td>
                         <td><%=dt.Rows[i]["Created_At"].ToString() %></td>
                         <td>
-                            <a href="#" title="Update">
+                            <a href="KullaniciKayit.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Update">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </td>

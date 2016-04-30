@@ -17,38 +17,37 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th><a href="#" >Ürün Id</a></th>
-                        <th><a href="#" >İsim</a></th>
-                        <th><a href="#" >Fiyat</a></th>
-                        <th><a href="#" >Vergi Kuru</a></th>
-                        <th><a href="#" >Miktar</a></th>
-                        <th><a href="#" >Kayıt Tarihi</a></th>
-                        <th><a href="#" >Tanım</a></th>
+                        <th><a href="#">Ürün Id</a></th>
+                        <th><a href="#">İsim</a></th>
+                        <th><a href="#">Fiyat</a></th>
+                        <th><a href="#">Vergi Kuru</a></th>
+                        <th><a href="#">Miktar</a></th>
+                        <th><a href="#">Kayıt Tarihi</a></th>
+                        <th><a href="#">Tanım</a></th>
                         <th class="action-column">&nbsp;</th>
                     </tr>
                     <tr id="w0-filters" class="filters">
                         <td>&nbsp;</td>
                         <td>
-                            <input type="text" class="form-control" name="ProductSearch[id_product]">
-
+                            <input type="text" class="form-control" name="ProductSearch[id_product]" disabled="disabled">
                         </td>
                         <td>
                             <input type="text" class="form-control" name="ProductSearch[name]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="ProductSearch[price]">
+                            <input type="text" class="form-control" name="ProductSearch[price]" disabled="disabled">
                         </td>
                         <td>
                             <input type="text" class="form-control" name="ProductSearch[tax_rate]">
                         </td>
-                         <td>
+                        <td>
                             <input type="text" class="form-control" name="ProductSearch[Quantity]">
                         </td>
                         <td>
                             <input type="text" class="form-control" name="ProductSearch[Create_At]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="ProductSearch[Decription]">
+                            <input type="text" class="form-control" name="ProductSearch[Decription]" disabled="disabled">
                         </td>
                         <td>&nbsp;</td>
                     </tr>
@@ -70,11 +69,8 @@
                         <td><%=dt.Rows[i]["Create_At"].ToString() %></td>
                         <td><%=dt.Rows[i]["Decription"].ToString() %></td>
                         <td>
-                            <a href="#" title="Update">
+                            <a href="UrunKayit.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Update">
                                 <span class="glyphicon glyphicon-pencil"></span>
-                            </a>
-                            <a href="UrunListe.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Delete">
-                                <span class="glyphicon glyphicon-trash"></span>
                             </a>
                         </td>
                     </tr>

@@ -28,7 +28,7 @@
                     <tr id="w0-filters" class="filters">
                         <td>&nbsp;</td>
                         <td>
-                            <input type="text" class="form-control" name="CustomerSearch[id_customer]"></td>
+                            <input type="text" class="form-control" name="CustomerSearch[id_customer]"  disabled="disabled"></td>
                         <td>
                             <input type="text" class="form-control" name="CustomerSearch[companyname]"></td>
                         <td>
@@ -36,9 +36,9 @@
                         <td>
                             <input type="text" class="form-control" name="CustomerSearch[lastname]"></td>
                         <td>
-                            <input type="text" class="form-control" name="CustomerSearch[tax_number]"></td>
+                            <input type="text" class="form-control" name="CustomerSearch[tax_number]"  disabled="disabled"></td>
                         <td>
-                            <input type="text" class="form-control" name="CustomerSearch[tax_office]"></td>
+                            <input type="text" class="form-control" name="CustomerSearch[tax_office]"  disabled="disabled"></td>
                         <td>&nbsp;</td>
                     </tr>
                 </thead>
@@ -64,9 +64,6 @@
                             </a>
                             <a href="#" title="Düzenle">
                                 <span class="glyphicon glyphicon-pencil"></span>
-                            </a>
-                            <a href="MusteriListe.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Sil">
-                                <span class="glyphicon glyphicon-trash"></span>
                             </a>
                         </td>
                     </tr>
