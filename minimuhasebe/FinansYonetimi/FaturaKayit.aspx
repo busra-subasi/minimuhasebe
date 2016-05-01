@@ -9,158 +9,156 @@
         <li class="active">Yeni Fatura</li>
     </ul>
     <div class="sales-invoice-create">
-        <form id="sales-invoice-create-form" action="/web/index.php?r=salesinvoice%2Fcreate" method="post">
-            <input type="hidden" name="_csrf" value="OGpWVzY1cnhtOQR6QWELDlEzEWRzUDg0Ulg1DwIHQEBcBwMFAHwrPg=="><h1>Satış Faturası Talebi </h1>
+        <h1>Satış Faturası Talebi </h1>
+        <div class="sales-invoice-form">
+            <div class="form-group field-salesinvoice-id_customer required">
+                <select id="salesinvoice-id_customer" class="form-control select2-hidden-accessible" name="SalesInvoice[id_customer]" onchange="onCustomerChange(this.value)">
+                    <option value="">Müşteri Seçimi ...</option>
+                    <%
+                        Customer oCustomer = new Customer();
+                        oCustomer.oDataTable = oCustomer.SelectAll();
+                        for (int i = 0; i < oCustomer.oDataTable.Rows.Count; i++)
+                        { %>
+                    <option value="<%=oCustomer.oDataTable.Rows[i]["Id"].ToString() %>"><%=oCustomer.oDataTable.Rows[i]["Companyname"].ToString() %></option>
+                    <% }
+                    %>
+                </select>
+                <div class="help-block"></div>
+            </div>
+            <div class="form-group field-salesinvoice-description">
+                <textarea id="salesinvoice-description" class="form-control" name="SalesInvoice[description]" rows="3" placeholder="Tanım"></textarea>
 
-            <div class="sales-invoice-form">
-                <div class="form-group field-salesinvoice-id_customer required has-success">
+                <div class="help-block"></div>
+            </div>
+            <input id="sales_invoice_item_list_form_input" name="sales_invoice_item_list_form_input" type="hidden" />
 
-                    <select id="salesinvoice-id_customer" class="form-control select2-hidden-accessible" name="SalesInvoice[id_customer]" onchange="onCustomerChange(this.value)"  >
-                        <option value="">Müşteri Seçimi ...</option>
-                        <option value="7">test</option>
-                    </select>
-                    <div class="help-block"></div>
-                </div>
-                <div class="form-group field-salesinvoice-id_invoice_status required">
+            <div id="form-hide-fields" class="row" style="display: none">
+                <div class="col-xs-3">
+                    <div class="form-group field-salesinvoice-tax_number required">
+                        <label class="control-label" for="salesinvoice-tax_number">Vergi Numarası</label>
+                        <input type="text" id="salesinvoice-tax_number" class="form-control" name="SalesInvoice[tax_number]" readonly="" placeholder="Vergi Numarası">
 
-                    <select id="salesinvoice-id_invoice_status" class="form-control select2-hidden-accessible" name="SalesInvoice[id_invoice_status]">
-                        <option value="1">İşlem</option>
-                        <option value="2">Onayla</option>
-                        <option value="3">Yazdır</option>
-                        <option value="4">Gönder</option>
-                    </select>
-                    <div class="help-block"></div>
-                </div>
-                <div class="form-group field-salesinvoice-description">
-
-                    <textarea id="salesinvoice-description" class="form-control" name="SalesInvoice[description]" rows="3" placeholder="Tanım"></textarea>
-
-                    <div class="help-block"></div>
-                </div>
-                <input id="sales_invoice_item_list_form_input" name="sales_invoice_item_list_form_input" type="hidden">
-
-                <div id="form-hide-fields" class="row" style="">
-                    <div class="col-xs-3">
-                        <div class="form-group field-salesinvoice-tax_number required">
-                            <label class="control-label" for="salesinvoice-tax_number">Vergi Numarası</label>
-                            <input type="text" id="salesinvoice-tax_number" class="form-control" name="SalesInvoice[tax_number]" readonly="" placeholder="Vergi Numarası">
-
-                            <div class="help-block"></div>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="form-group field-salesinvoice-tax_office required">
-                            <label class="control-label" for="salesinvoice-tax_office">Vergi Bürosu</label>
-                            <input type="text" id="salesinvoice-tax_office" class="form-control" name="SalesInvoice[tax_office]" readonly="" placeholder="Vergi Bürosu">
-
-                            <div class="help-block"></div>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="form-group field-salesinvoice-total">
-                            <label class="control-label" for="salesinvoice-total">Toplam</label>
-                            <input type="text" id="salesinvoice-total" class="form-control" name="SalesInvoice[total]" readonly="" placeholder="Toplam">
-
-                            <div class="help-block"></div>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="form-group field-salesinvoice-taxtotal">
-                            <label class="control-label" for="salesinvoice-taxtotal">Toplam Vergi</label>
-                            <input type="text" id="salesinvoice-taxtotal" class="form-control" name="SalesInvoice[taxtotal]" readonly="" placeholder="Toplam Vergi">
-
-                            <div class="help-block"></div>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="form-group field-salesinvoice-grandtotal">
-                            <label class="control-label" for="salesinvoice-grandtotal">Genel Toplam</label>
-                            <input type="text" id="salesinvoice-grandtotal" class="form-control" name="SalesInvoice[grandtotal]" readonly="" placeholder="Genel Toplam">
-
-                            <div class="help-block"></div>
-                        </div>
+                        <div class="help-block"></div>
                     </div>
                 </div>
+                <div class="col-xs-3">
+                    <div class="form-group field-salesinvoice-tax_office required">
+                        <label class="control-label" for="salesinvoice-tax_office">Vergi Bürosu</label>
+                        <input type="text" id="salesinvoice-tax_office" class="form-control" name="SalesInvoice[tax_office]" readonly="" placeholder="Vergi Bürosu">
 
-                <table id="sales_invoice_item_list" class="table table-striped table-bordered" style="">
-                    <thead>
-                        <tr>
-                            <th><span>Ürün Id</span></th>
-                            <th><span>Ürün</span></th>
-                            <th><span>Miktar</span></th>
-                            <th><span>Fiyat</span></th>
-                            <th><span>Vergi Kuru</span></th>
-                            <th><span>Toplam</span></th>
-                            <th><span>Toplam Vergi</span></th>
-                            <th><span>Genel toplam</span></th>
-                            <th><span></span></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="sales_invoice_item_6">
-                            <td><span id="sales_invoice_item_id_6">6</span></td>
-                            <td><span id="sales_invoice_item_name_6">Ürün1</span></td>
-                            <td>
-                                <input id="sales_invoice_item_quantity_6" type="text" class="form-control" onkeyup="onValueChange(6)" value="1"></td>
-                            <td>
-                                <input id="sales_invoice_item_price_6" type="text" class="form-control" onkeyup="onValueChange(6)" value="120.0000"></td>
-                            <td>
-                                <input id="sales_invoice_item_taxrate_6" type="text" class="form-control" value="0.0500" readonly=""></td>
-                            <td>
-                                <input id="sales_invoice_item_total_6" type="text" class="form-control" value="120" readonly=""></td>
-                            <td>
-                                <input id="sales_invoice_item_taxtotal_6" type="text" class="form-control" value="6" readonly=""></td>
-                            <td>
-                                <input id="sales_invoice_item_grandtotal_6" type="text" class="form-control" value="126" readonly=""></td>
-                            <td class="text-center"><a href="#" onclick="deleteSalesInvoiceItem(6)" class="glyphicon glyphicon-trash"></a></td>
-                        </tr>
-                        <tr id="sales_invoice_item_7">
-                            <td>
-                                <span id="sales_invoice_item_id_7">7</span></td>
-                            <td><span id="sales_invoice_item_name_7">Bilgisayar</span></td>
-                            <td>
-                                <input id="sales_invoice_item_quantity_7" type="text" class="form-control" onkeyup="onValueChange(7)" value="5"></td>
-                            <td>
-                                <input id="sales_invoice_item_price_7" type="text" class="form-control" onkeyup="onValueChange(7)" value="1000.0000"></td>
-                            <td>
-                                <input id="sales_invoice_item_taxrate_7" type="text" class="form-control" value="0.9999" readonly=""></td>
-                            <td>
-                                <input id="sales_invoice_item_total_7" type="text" class="form-control" value="5000" readonly=""></td>
-                            <td>
-                                <input id="sales_invoice_item_taxtotal_7" type="text" class="form-control" value="4999.5" readonly=""></td>
-                            <td>
-                                <input id="sales_invoice_item_grandtotal_7" type="text" class="form-control" value="9999.5" readonly=""></td>
-                            <td class="text-center"><a href="#" onclick="deleteSalesInvoiceItem(7)" class="glyphicon glyphicon-trash"></a></td>
+                        <div class="help-block"></div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group field-salesinvoice-total">
+                        <label class="control-label" for="salesinvoice-total">Toplam</label>
+                        <input type="text" id="salesinvoice-total" class="form-control" name="SalesInvoice[total]" readonly="" placeholder="Toplam">
 
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="5"></td>
-                            <td class="bg-info" colspan="1"><span id="sales_invoice_item_total">5120</span></td>
-                            <td class="bg-danger" colspan="1"><span id="sales_invoice_item_tax_total">5005.5</span></td>
-                            <td class="bg-success" colspan="1"><span id="sales_invoice_item_grand_total">10125.5</span></td>
-                            <td colspan="1"></td>
-                        </tr>
-                        <tr>
+                        <div class="help-block"></div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group field-salesinvoice-taxtotal">
+                        <label class="control-label" for="salesinvoice-taxtotal">Toplam Vergi</label>
+                        <input type="text" id="salesinvoice-taxtotal" class="form-control" name="SalesInvoice[taxtotal]" readonly="" placeholder="Toplam Vergi">
+
+                        <div class="help-block"></div>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="form-group field-salesinvoice-grandtotal">
+                        <label class="control-label" for="salesinvoice-grandtotal">Genel Toplam</label>
+                        <input type="text" id="salesinvoice-grandtotal" class="form-control" name="SalesInvoice[grandtotal]" readonly="" placeholder="Genel Toplam">
+
+                        <div class="help-block"></div>
+                    </div>
+                </div>
+            </div>
+
+            <table id="sales_invoice_item_list" class="table table-striped table-bordered" style="">
+                <thead>
+                    <tr>
+                        <th><span>Ürün Id</span></th>
+                        <th><span>Ürün</span></th>
+                        <th><span>Miktar</span></th>
+                        <th><span>Fiyat</span></th>
+                        <th><span>Vergi Kuru</span></th>
+                        <th><span>Toplam</span></th>
+                        <th><span>Toplam Vergi</span></th>
+                        <th><span>Genel toplam</span></th>
+                        <th><span></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%--<tr id="sales_invoice_item_6">
+                        <td><span id="sales_invoice_item_id_6">6</span></td>
+                        <td><span id="sales_invoice_item_name_6">Ürün1</span></td>
+                        <td>
+                            <input id="sales_invoice_item_quantity_6" type="text" class="form-control" onkeyup="onValueChange(6)" value="1"></td>
+                        <td>
+                            <input id="sales_invoice_item_price_6" type="text" class="form-control" onkeyup="onValueChange(6)" value="120.0000"></td>
+                        <td>
+                            <input id="sales_invoice_item_taxrate_6" type="text" class="form-control" value="0.0500" readonly=""></td>
+                        <td>
+                            <input id="sales_invoice_item_total_6" type="text" class="form-control" value="120" readonly=""></td>
+                        <td>
+                            <input id="sales_invoice_item_taxtotal_6" type="text" class="form-control" value="6" readonly=""></td>
+                        <td>
+                            <input id="sales_invoice_item_grandtotal_6" type="text" class="form-control" value="126" readonly=""></td>
+                        <td class="text-center"><a href="#" onclick="deleteSalesInvoiceItem(6)" class="glyphicon glyphicon-trash"></a></td>
+                    </tr>
+                    <tr id="sales_invoice_item_7">
+                        <td>
+                            <span id="sales_invoice_item_id_7">7</span></td>
+                        <td><span id="sales_invoice_item_name_7">Bilgisayar</span></td>
+                        <td>
+                            <input id="sales_invoice_item_quantity_7" type="text" class="form-control" onkeyup="onValueChange(7)" value="5"></td>
+                        <td>
+                            <input id="sales_invoice_item_price_7" type="text" class="form-control" onkeyup="onValueChange(7)" value="1000.0000"></td>
+                        <td>
+                            <input id="sales_invoice_item_taxrate_7" type="text" class="form-control" value="0.9999" readonly=""></td>
+                        <td>
+                            <input id="sales_invoice_item_total_7" type="text" class="form-control" value="5000" readonly=""></td>
+                        <td>
+                            <input id="sales_invoice_item_taxtotal_7" type="text" class="form-control" value="4999.5" readonly=""></td>
+                        <td>
+                            <input id="sales_invoice_item_grandtotal_7" type="text" class="form-control" value="9999.5" readonly=""></td>
+                        <td class="text-center"><a href="#" onclick="deleteSalesInvoiceItem(7)" class="glyphicon glyphicon-trash"></a></td>
+
+                    </tr>--%>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5"></td>
+                        <td class="bg-info" colspan="1"><span id="sales_invoice_item_total">5120</span></td>
+                        <td class="bg-danger" colspan="1"><span id="sales_invoice_item_tax_total">5005.5</span></td>
+                        <td class="bg-success" colspan="1"><span id="sales_invoice_item_grand_total">10125.5</span></td>
+                        <td colspan="1"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <select id="product_items" class="form-control select2-hidden-accessible" name="product_items">
+                                <option value="">Ürün Seçimi ...</option>
+                                <%
+                                    Product oProduct = new Product();
+                                    oProduct.oDataTable = oProduct.SelectAll();
+                                    for (int i = 0; i < oProduct.oDataTable.Rows.Count; i++)
+                                    { %>
+                                    <option value="<%Response.Write(oProduct.oDataTable.Rows[i]["Id"].ToString());%>"><%Response.Write(oProduct.oDataTable.Rows[i]["Name"].ToString()); %></option>
+                                <% }%>                               
+                            </select>
                             <td colspan="4">
-                                <select id="product_items" class="form-control select2-hidden-accessible" name="product_items">
-                                    <option value="">Ürün Seçimi ...</option>
-                                    <option value="6">Ürün1</option>
-                                    <option value="7">Bilgisayar</option>
-                                </select>
-                                 <td colspan="4">
                                 <input id="product_item_quantity" name="product_item_quantity" type="number" class="form-control" value="" onkeypress="if(event.keyCode==13){getProduct(); return true;}">
                             </td>
                             <td colspan="1">
-                                <input id="product_item_add" name="product_item_add" type="button" class="btn btn-success" value="Kalem ekle" onclick="getProduct()">
+                                <input id="product_item_add" name="product_item_add" type="button" class="btn btn-success" value="Ekle" onclick="getProduct()">
                             </td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <button type="button" class="btn btn-success" onclick="onBeforeSubmit()">Düzenle</button>
-            </div>
-        </form>
+                    </tr>
+                </tfoot>
+            </table>
+            <button type="button" class="btn btn-success" onclick="onBeforeSubmit()">Kaydet</button>
+        </div>
+
 
         <script type="text/javascript">
             var isSubmit = false;
@@ -174,14 +172,13 @@
             function onCustomerChange(id_customer) {
                 $.ajax({
                     type: "POST",
-                    url: '/web/index.php?r=customer/getcustomer',
-                    data: { id_customer: id_customer },
+                    url: 'Ajax.aspx?op=getcustomer&Id=' + id_customer,
+                    //data: { id_customer: id_customer },
                     dataType: "text",
                     success: function (result) {
-                        var customerJSON = JSON.parse(result);
-                        //console.log(customerJSON);
-                        $('#salesinvoice-tax_number').val(customerJSON.tax_number);
-                        $('#salesinvoice-tax_office').val(customerJSON.tax_office);
+                        var resultArray = result.split(":");
+                        $('#salesinvoice-tax_number').val(resultArray[1]);
+                        $('#salesinvoice-tax_office').val(resultArray[2]);
                         $('#form-hide-fields').show();
                         $('#sales_invoice_item_list').show();
                     }
@@ -195,8 +192,8 @@
                         $.ajax(
                             {
                                 type: "POST",
-                                url: '/web/index.php?r=product/getproductprice',
-                                data: { id_product: selectedValue },
+                                url: 'Ajax.aspx?op=getproductprice&Id=' + selectedValue,
+                                //data: { id_product: selectedValue },
                                 dataType: "text",
                                 success: function (result) {
                                     var productJSON = JSON.parse(result);
@@ -288,7 +285,7 @@
                 //console.log(productItemList); 
                 $("#sales_invoice_item_list_form_input").val(productItemList);
                 isSubmit = true;
-                $("#sales-invoice-create-form").submit();
+                $("#form1").submit();
             }
             function onCalculate() {
                 var table = document.getElementById('sales_invoice_item_list');
