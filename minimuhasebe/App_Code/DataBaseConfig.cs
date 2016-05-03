@@ -81,7 +81,7 @@ public class DataBaseConfig
     #endregion
 
     #region CRUDFunction
-    public bool Insert()
+    public object Insert(bool returnId = false)
     {
         var PropertyList = this.GetType().GetProperties();
         string InsertText = "INSERT INTO [TABLENAME] ([COLUMNS]) VALUES ([VALUES])";
@@ -109,7 +109,13 @@ public class DataBaseConfig
         InsertText = InsertText.Replace("[COLUMNS]", Columns);
         InsertText = InsertText.Replace("[VALUES]", Values);
         oCommand.CommandText = InsertText;
-        return this.ExecuteCommand(oCommand);
+        if (returnId) {
+            return this.ExecuteScaler(oCommand);
+        }
+        if (this.ExecuteCommand(oCommand)) {
+            return 1;
+        }
+        return 0; 
     }
     public bool Update()
     {

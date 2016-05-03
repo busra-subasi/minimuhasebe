@@ -62,7 +62,7 @@
                             <a href="MusteriDetay.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Göster">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
-                            <a href="#" title="Düzenle">
+                            <a href="MusteriKayit.aspx?Id=<%=dt.Rows[i]["Id"].ToString() %>" title="Düzenle">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </td>

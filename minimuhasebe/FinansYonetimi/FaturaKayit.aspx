@@ -106,33 +106,14 @@
                         <td>
                             <input id="sales_invoice_item_grandtotal_6" type="text" class="form-control" value="126" readonly=""></td>
                         <td class="text-center"><a href="#" onclick="deleteSalesInvoiceItem(6)" class="glyphicon glyphicon-trash"></a></td>
-                    </tr>
-                    <tr id="sales_invoice_item_7">
-                        <td>
-                            <span id="sales_invoice_item_id_7">7</span></td>
-                        <td><span id="sales_invoice_item_name_7">Bilgisayar</span></td>
-                        <td>
-                            <input id="sales_invoice_item_quantity_7" type="text" class="form-control" onkeyup="onValueChange(7)" value="5"></td>
-                        <td>
-                            <input id="sales_invoice_item_price_7" type="text" class="form-control" onkeyup="onValueChange(7)" value="1000.0000"></td>
-                        <td>
-                            <input id="sales_invoice_item_taxrate_7" type="text" class="form-control" value="0.9999" readonly=""></td>
-                        <td>
-                            <input id="sales_invoice_item_total_7" type="text" class="form-control" value="5000" readonly=""></td>
-                        <td>
-                            <input id="sales_invoice_item_taxtotal_7" type="text" class="form-control" value="4999.5" readonly=""></td>
-                        <td>
-                            <input id="sales_invoice_item_grandtotal_7" type="text" class="form-control" value="9999.5" readonly=""></td>
-                        <td class="text-center"><a href="#" onclick="deleteSalesInvoiceItem(7)" class="glyphicon glyphicon-trash"></a></td>
-
                     </tr>--%>
                 </tbody>
                 <tfoot>
                     <tr>
                         <td colspan="5"></td>
-                        <td class="bg-info" colspan="1"><span id="sales_invoice_item_total">5120</span></td>
-                        <td class="bg-danger" colspan="1"><span id="sales_invoice_item_tax_total">5005.5</span></td>
-                        <td class="bg-success" colspan="1"><span id="sales_invoice_item_grand_total">10125.5</span></td>
+                        <td class="bg-info" colspan="1"><span id="sales_invoice_item_total">0</span></td>
+                        <td class="bg-danger" colspan="1"><span id="sales_invoice_item_tax_total">0</span></td>
+                        <td class="bg-success" colspan="1"><span id="sales_invoice_item_grand_total">0</span></td>
                         <td colspan="1"></td>
                     </tr>
                     <tr>
@@ -177,8 +158,8 @@
                     dataType: "text",
                     success: function (result) {
                         var resultArray = result.split(":");
-                        $('#salesinvoice-tax_number').val(resultArray[1]);
-                        $('#salesinvoice-tax_office').val(resultArray[2]);
+                        $('#salesinvoice-tax_number').val(resultArray[2]);
+                        $('#salesinvoice-tax_office').val(resultArray[1]);
                         $('#form-hide-fields').show();
                         $('#sales_invoice_item_list').show();
                     }
@@ -196,29 +177,35 @@
                                 //data: { id_product: selectedValue },
                                 dataType: "text",
                                 success: function (result) {
-                                    var productJSON = JSON.parse(result);
+                                    var resultArray = result.split(":");//{ "id_product":6,"name":"Product1","price":"120.0000","tax_rate":"0.0500"}
+                                    var id_product = resultArray[0];
+                                    var name = resultArray[1];
+                                    var price = resultArray[2];
+                                    var tax_rate = resultArray[3]
+                                    //var productJSON = JSON.parse(result);
                                     //
                                     var quantity = $(product_quantity).val();
-                                    var price = productJSON.price;
+                                    //var price = productJSON.price;
                                     var total = price * quantity;
-                                    var taxTotal = total * productJSON.tax_rate;
+                                    var taxTotal = total * tax_rate;
                                     var grandTotal = total + taxTotal;
                                     //
-                                    var tbodyItem = "<tr id='sales_invoice_item_" + productJSON.id_product + "'>";
-                                    tbodyItem += "       <td> <span   id='sales_invoice_item_id_" + productJSON.id_product + "'>" + productJSON.id_product + "</span></td>";
-                                    tbodyItem += "       <td> <span   id='sales_invoice_item_name_" + productJSON.id_product + "'>" + productJSON.name + "</span></td>";
-                                    tbodyItem += "       <td> <input  id='sales_invoice_item_quantity_" + productJSON.id_product + "' type='text' class='form-control' onkeyup='onValueChange(" + productJSON.id_product + ")'  value='" + quantity + "'/></td>";
-                                    tbodyItem += "       <td> <input  id='sales_invoice_item_price_" + productJSON.id_product + "'  type='text' class='form-control' onkeyup='onValueChange(" + productJSON.id_product + ")'  value='" + price + "'/></td>";
-                                    tbodyItem += "       <td> <input  id='sales_invoice_item_taxrate_" + productJSON.id_product + "' type='text' class='form-control'   value='" + productJSON.tax_rate + "'' readonly/></td>";
-                                    tbodyItem += "       <td> <input  id='sales_invoice_item_total_" + productJSON.id_product + "' type='text' class='form-control'   value='" + total + "'' readonly/></td>";
-                                    tbodyItem += "       <td> <input  id='sales_invoice_item_taxtotal_" + productJSON.id_product + "' type='text' class='form-control'   value='" + taxTotal + "'' readonly/></td>";
-                                    tbodyItem += "       <td> <input  id='sales_invoice_item_grandtotal_" + productJSON.id_product + "' type='text' class='form-control'  value='" + grandTotal + "' readonly/></td>";
-                                    tbodyItem += "       <td class='text-center'> <a href='#' onclick='deleteSalesInvoiceItem(" + productJSON.id_product + ")' class='glyphicon glyphicon-trash' > </a></td>"
+                                   
+                                    var tbodyItem = "<tr id='sales_invoice_item_" + id_product + "'>";
+                                    tbodyItem += "       <td> <span   id='sales_invoice_item_id_" + id_product + "'>" + id_product + "</span></td>";
+                                    tbodyItem += "       <td> <span   id='sales_invoice_item_name_" + id_product + "'>" + name + "</span></td>";
+                                    tbodyItem += "       <td> <input  id='sales_invoice_item_quantity_" + id_product + "' type='text' class='form-control' onkeyup='onValueChange(" + id_product + ")'  value='" + quantity + "'/></td>";
+                                    tbodyItem += "       <td> <input  id='sales_invoice_item_price_" + id_product + "'  type='text' class='form-control' onkeyup='onValueChange(" + id_product + ")'  value='" + price + "'/></td>";
+                                    tbodyItem += "       <td> <input  id='sales_invoice_item_taxrate_" + id_product + "' type='text' class='form-control'   value='" + tax_rate + "'' readonly/></td>";
+                                    tbodyItem += "       <td> <input  id='sales_invoice_item_total_" + id_product + "' type='text' class='form-control'   value='" + total + "'' readonly/></td>";
+                                    tbodyItem += "       <td> <input  id='sales_invoice_item_taxtotal_" + id_product + "' type='text' class='form-control'   value='" + taxTotal + "'' readonly/></td>";
+                                    tbodyItem += "       <td> <input  id='sales_invoice_item_grandtotal_" + id_product + "' type='text' class='form-control'  value='" + grandTotal + "' readonly/></td>";
+                                    tbodyItem += "       <td class='text-center'> <a href='#' onclick='deleteSalesInvoiceItem(" + id_product + ")' class='glyphicon glyphicon-trash' > </a></td>"
                                     tbodyItem += "</tr>";
                                     //tablo ya ekle
                                     $('#sales_invoice_item_list tbody').append(tbodyItem);
                                     $(product_quantity).val("");
-                                    $('#product_items').select2("open");
+                                    //$('#product_items').select2("open");
                                     //fiyat güncelle
                                     onCalculate();
                                 }
