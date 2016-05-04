@@ -56,6 +56,7 @@ public class DataBaseConfig
         object Result = null;
         DbOpen();
         oCommand.Connection = this.oConnection;
+        oCommand.CommandText = oCommand.CommandText + "; SELECT SCOPE_IDENTITY();";
         Result = oCommand.ExecuteScalar();
         DbClose();
         return Result;
@@ -109,13 +110,16 @@ public class DataBaseConfig
         InsertText = InsertText.Replace("[COLUMNS]", Columns);
         InsertText = InsertText.Replace("[VALUES]", Values);
         oCommand.CommandText = InsertText;
-        if (returnId) {
+        if (returnId)
+        {
             return this.ExecuteScaler(oCommand);
         }
-        if (this.ExecuteCommand(oCommand)) {
-            return 1;
+        else if (this.ExecuteCommand(oCommand))
+        {
+            return 0;
         }
-        return 0; 
+
+        return -1;
     }
     public bool Update()
     {

@@ -38,6 +38,9 @@
                             <br>
                             <hr>
                             <% 
+                                decimal Total = 0;
+                                decimal Tax_Total = 0;
+                                decimal Grand_Total = 0;
                                 DataBaseConfig db = new DataBaseConfig();
 
                                 string sql = " Select p.*,c.Companyname As Companyname, c.Addres as Addres ,c.Phone as Phone ,c.Email as Email";
@@ -50,7 +53,12 @@
 
                                 SqlDataReader reader = db.ExecuteReader(db.oCommand);
                                 if (reader.Read())
-                                {  %>
+                                {
+                                    Total = Convert.ToDecimal(reader["Total"]);
+                                    Tax_Total = Convert.ToDecimal(reader["Tax_Total"]);
+                                    Grand_Total = Convert.ToDecimal(reader["Grand_Total"]);
+
+                                     %>
                             <p><strong>Fatura No : </strong><%=reader["Id"] %></p>
                             <address>
                                 <strong>Tarih </strong>
@@ -90,10 +98,11 @@
                                     <thead>
                                         <tr>
                                             <td><strong>#</strong></td>
-                                            <td><strong>Ürün</strong></td>
-                                            <td><strong>Fiyat</strong></td>
-                                            <td><strong>Vergi Kuru</strong></td>
-                                            <td class="text-right"><strong>Miktar</strong></td>
+                                            <td style="width:70%;"><strong>Ürün</strong></td>
+                                             <td style="width:10%;"><strong>Miktar</strong></td>
+                                            <td class="text-right" style="width:10%;"><strong>Fiyat</strong></td>
+                                            <td class="text-right" style="width:10%;"><strong>Vergi Kuru</strong></td>
+                                           
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -112,13 +121,16 @@
                                         <tr>
                                             <td><%=i+1 %></td>
                                             <td><%=oSalesItem.oDataTable.Rows[i]["Name"].ToString() %></td>
-                                            <td><%=oSalesItem.oDataTable.Rows[i]["Price"].ToString() %></td>
-                                            <td><%=oSalesItem.oDataTable.Rows[i]["Tax_Rate"].ToString() %></td>
-                                            <td class="text-right"><%=oSalesItem.oDataTable.Rows[i]["Quantity"].ToString() %></td>
+                                             <td  ><%=oSalesItem.oDataTable.Rows[i]["Quantity"].ToString() %></td>
+                                            <td class="text-right"><%=oSalesItem.oDataTable.Rows[i]["Price"].ToString() %></td>
+                                            <td class="text-right"><%=oSalesItem.oDataTable.Rows[i]["Tax_Rate"].ToString() %></td>
+                                           
                                         </tr>
                                         <%}%>
                                     </tbody>
-                                    <tfoot>
+                                   
+                                </table>
+                                 <table style="float:right;">
                                         <tr>
                                             <td colspan="4"></td>
                                             <td colspan="1">
@@ -131,29 +143,28 @@
                                                     </thead>
                                                     <tr>
                                                         <td>Toplam :</td>
-                                                        <td class="text-right">3240.0000</td>
+                                                        <td class="text-right"><%=Total %></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Toplam Vergi :</td>
-                                                        <td class="text-right">3011.7000</td>
+                                                        <td class="text-right"><%=Tax_Total %></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Genel Toplam :</td>
-                                                        <td class="text-right">6251.7000</td>
+                                                        <td class="text-right"><%=Grand_Total %></td>
                                                     </tr>
                                                 </table>
 
                                             </td>
                                         </tr>
-                                    </tfoot>
-                                </table>
+                                    </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script language="JavaScript">  //window.print();</script>
+        <script language="JavaScript"> window.print();</script>
     </body>
 </html>
 

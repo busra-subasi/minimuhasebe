@@ -1,0 +1,17 @@
+﻿asd
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .vs/minimuhasebe/v14/.suo
+#	modified:   minimuhasebe/App_Code/DataBaseConfig.cs
+#
+# Changes not staged for commit:
+#	modified:   minimuhasebe/App_Data/minimuhasebeDB.mdf
+#	modified:   minimuhasebe/App_Data/minimuhasebeDB_log.ldf
+#	modified:   minimuhasebe/FinansYonetimi/FaturaKayit.aspx.cs
+#	modified:   minimuhasebe/FinansYonetimi/FaturaYazdir.aspx
+#
+
