@@ -180,8 +180,8 @@
                                     var resultArray = result.split(":");//{ "id_product":6,"name":"Product1","price":"120.0000","tax_rate":"0.0500"}
                                     var id_product = resultArray[0];
                                     var name = resultArray[1];
-                                    var price = resultArray[2];
-                                    var tax_rate = resultArray[3]
+                                    var price = parseFloat(resultArray[2].replace(",", "."));
+                                    var tax_rate = parseFloat(resultArray[3].replace(",", "."));
                                     //var productJSON = JSON.parse(result);
                                     //
                                     var quantity = $(product_quantity).val();
@@ -205,7 +205,6 @@
                                     //tablo ya ekle
                                     $('#sales_invoice_item_list tbody').append(tbodyItem);
                                     $(product_quantity).val("");
-                                    //$('#product_items').select2("open");
                                     //fiyat güncelle
                                     onCalculate();
                                 }
@@ -288,9 +287,11 @@
                         continue;
                     }
                     total = (parseFloat(total) + parseFloat($("#" + cells[5].children.item(0).getAttribute("id")).val()));//tablodaki total kolonu;
+
                     tax_total = parseFloat(tax_total) + parseFloat($("#" + cells[6].children.item(0).getAttribute("id")).val());
                     grand_total = parseFloat(grand_total) + parseFloat($("#" + cells[7].children.item(0).getAttribute("id")).val());
                 }
+                
                 $("#sales_invoice_item_total").text(total);
                 $("#sales_invoice_item_tax_total").text(tax_total);
                 $("#sales_invoice_item_grand_total").text(grand_total);

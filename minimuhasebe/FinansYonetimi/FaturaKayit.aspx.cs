@@ -15,6 +15,9 @@ public partial class FinansYonetimi_FaturaKayit : System.Web.UI.Page
 
             SalesInvoice oSalesInvoice = new SalesInvoice();
 
+            if (Request.Form["SalesInvoice[id_customer]"] == "") {
+                Response.Redirect("FaturaListe.aspx");
+            }
             oSalesInvoice.Id_Customer = Convert.ToInt32(Request.Form["SalesInvoice[id_customer]"]);
             oSalesInvoice.Id_User_Create = Convert.ToInt32(Session["Id"]);
 
@@ -22,13 +25,13 @@ public partial class FinansYonetimi_FaturaKayit : System.Web.UI.Page
             oSalesInvoice.Tax_Office = Request.Form["SalesInvoice[tax_office]"].ToString();
 
 
-            oSalesInvoice.Grand_Total = Convert.ToDecimal(Request.Form["SalesInvoice[grandtotal]"]);
-            oSalesInvoice.Tax_Total = Convert.ToDecimal(Request.Form["SalesInvoice[taxtotal]"]);
-            oSalesInvoice.Total = Convert.ToDecimal(Request.Form["SalesInvoice[total]"]);
+            oSalesInvoice.Grand_Total = Convert.ToDecimal(Request.Form["SalesInvoice[grandtotal]"].Replace(".", ","));
+            oSalesInvoice.Tax_Total = Convert.ToDecimal(Request.Form["SalesInvoice[taxtotal]"].Replace(".", ","));
+            oSalesInvoice.Total = Convert.ToDecimal(Request.Form["SalesInvoice[total]"].Replace(".", ","));
 
             oSalesInvoice.Description = Request.Form["SalesInvoice[description]"].ToString();
             oSalesInvoice.Create_At = DateTime.Now;
-            int id = Convert.ToInt32(oSalesInvoice.Insert(true));
+            int id = Convert.ToInt32(oSalesInvoice.Insert(true));// fatura kayıt edildi
           
             string[] items = Request.Form["sales_invoice_item_list_form_input"].Split('/');
             for (int i = 0; i < items.Length; i++)
@@ -40,16 +43,16 @@ public partial class FinansYonetimi_FaturaKayit : System.Web.UI.Page
 
                 oSalesInvoiceItem.Id_Product = Convert.ToInt32(item[0]);
                 oSalesInvoiceItem.Quantity   = Convert.ToInt32(item[2]);
-                oSalesInvoiceItem.Price      = Convert.ToDecimal(item[3]);
-                oSalesInvoiceItem.Tax_Rate   = Convert.ToDecimal(item[4]);
+                oSalesInvoiceItem.Price      = Convert.ToDecimal(item[3].Replace(".", ","));
+                oSalesInvoiceItem.Tax_Rate   = Convert.ToDecimal(item[4].Replace(".", ","));
                 oSalesInvoiceItem.Insert();
             }
 
             PaymentTransaction oPaymentTransaction = new PaymentTransaction();
             oPaymentTransaction.Id_User_Create     = Convert.ToInt32(Session["Id"]);
             oPaymentTransaction.Id_Customer        = Convert.ToInt32(Request.Form["SalesInvoice[id_customer]"]);
-            oPaymentTransaction.Payment_Type       = 0;
-            oPaymentTransaction.Amount             = Convert.ToDecimal(Request.Form["SalesInvoice[grandtotal]"]);
+            oPaymentTransaction.Payment_Type       = 0;// borçlu oldu
+            oPaymentTransaction.Amount             = Convert.ToDecimal(Request.Form["SalesInvoice[grandtotal]"].Replace(".", ","));
             oPaymentTransaction.Description        = "Fatura Kesim";
             oPaymentTransaction.Create_At          = DateTime.Now;
             oPaymentTransaction.Insert();
