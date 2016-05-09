@@ -38,6 +38,10 @@
                             <br>
                             <hr>
                             <% 
+                                if (Request.QueryString["Id"] == "")
+                                {
+                                    Response.Redirect("FaturaListe.aspx");
+                                }
                                 decimal Total = 0;
                                 decimal Tax_Total = 0;
                                 decimal Grand_Total = 0;

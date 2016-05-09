@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <ul class="breadcrumb">
         <li><a href="/default.aspx">Anasayfa</a></li>
-        <li class="active">Kullanıclar</li>
+        <li class="active">Kullanıcılar</li>
     </ul>
     <div class="product-index">
         <h1>Kullanıclar<p class="pull-right"><a class="btn btn-success" href="KullaniciKayit.aspx">Yeni Kullanıcı</a></p>
@@ -33,7 +33,7 @@
                     <tr data-key="6">
                         <td><%=i+1 %></td>
                         <td><%=dt.Rows[i]["Id"].ToString() %></td>
-                        <td><%=dt.Rows[i]["Fullname "].ToString() %></td>
+                        <td><%=dt.Rows[i]["Fullname"].ToString() %></td>
                         <td><%=dt.Rows[i]["Email"].ToString() %></td>
                         <td><%=dt.Rows[i]["Password"].ToString() %></td>
                         <td><%=dt.Rows[i]["Created_At"].ToString() %></td>

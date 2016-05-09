@@ -38,8 +38,8 @@ public partial class UrunYonetimi_UrunKayit : System.Web.UI.Page
     {
         Product oProduct = new Product();
         oProduct.Name = Name.Text;
-        oProduct.Price = Convert.ToDecimal(Price.Text);
-        oProduct.Tax_Rate = Convert.ToDecimal(Tax_Rate.Text);
+        oProduct.Price = Convert.ToDecimal(Price.Text.Replace(".", ","));
+        oProduct.Tax_Rate = Convert.ToDecimal(Tax_Rate.Text.Replace(".", ","));
 
         oProduct.Decription = Decription.Text;
         oProduct.Quantity = Convert.ToInt32(Quantity.Text);

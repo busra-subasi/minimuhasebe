@@ -6,6 +6,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <% 
+        if (Request.QueryString["Id"] == "")
+        {
+            Response.Redirect("MusteriListe.aspx");
+        }
         DataBaseConfig db = new DataBaseConfig();
         db.oCommand = new SqlCommand("Select * from Customer where Id = " + Request.QueryString["Id"]);
 

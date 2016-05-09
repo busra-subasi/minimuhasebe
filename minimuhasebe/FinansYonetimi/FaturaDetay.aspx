@@ -13,6 +13,10 @@
     </ul>
     <div class="sales-invoice-view">
         <% 
+            if (Request.QueryString["Id"] == "")
+            {
+                Response.Redirect("FaturaListe.aspx");
+            }
             DataBaseConfig db = new DataBaseConfig();
 
             string sql = " Select p.*,c.Companyname As Companyname, u.Fullname as Fullname ";

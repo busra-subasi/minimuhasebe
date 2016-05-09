@@ -25,6 +25,8 @@
                 </select>
                 <div class="help-block"></div>
             </div>
+
+
             <div class="form-group field-salesinvoice-description">
                 <textarea id="salesinvoice-description" class="form-control" name="SalesInvoice[description]" rows="3" placeholder="Tanım"></textarea>
 
@@ -74,6 +76,8 @@
                     </div>
                 </div>
             </div>
+
+
 
             <table id="sales_invoice_item_list" class="table table-striped table-bordered" style="">
                 <thead>
@@ -141,6 +145,8 @@
         </div>
 
 
+
+
         <script type="text/javascript">
             var isSubmit = false;
             $(function () {
@@ -165,6 +171,9 @@
                     }
                 });
             }
+
+
+
             function getProduct() {
                 var selectedValue = $("#product_items option:selected").val(), invoice_quantity = '#sales_invoice_item_quantity_', sales_quantity = '#sales_invoice_item_', product_quantity = '#product_item_quantity';
                 if ($(product_quantity).val() != 0 && $(product_quantity).val() != "" && selectedValue != "") {
@@ -217,6 +226,11 @@
                     }
                 }
             }
+
+
+
+
+
             function onValueChange(id_product) {
                 var quantity = $("#sales_invoice_item_quantity_" + id_product).val();
                 var price = $("#sales_invoice_item_price_" + id_product).val();
@@ -273,6 +287,8 @@
                 isSubmit = true;
                 $("#form1").submit();
             }
+
+
             function onCalculate() {
                 var table = document.getElementById('sales_invoice_item_list');
                 var rows = table.getElementsByTagName('tr');
