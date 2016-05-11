@@ -39,13 +39,46 @@
                             <input type="text" class="form-control" name="CustomerSearch[tax_number]"  disabled="disabled"></td>
                         <td>
                             <input type="text" class="form-control" name="CustomerSearch[tax_office]"  disabled="disabled"></td>
-                        <td>&nbsp;</td>
+                         <td style="min-width:110px;">
+                            <button type="submit" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-search"></i> 
+                            </button>
+                            &nbsp;<asp:LinkButton ID="btnrefresh" runat="server" class="btn btn-primary" OnClick="btnrefresh_Click" ><i class =" glyphicon glyphicon-zoom-out"></i></asp:LinkButton>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
-                    <% 
+                     <% 
+                        DataTable dt;
                         Customer oCustomer = new Customer();
-                        DataTable dt = oCustomer.SelectAll();
+                        if (Request.RequestType == "POST")
+                        {
+                            string sql = "select * from Customer where 1=1 ";
+                            if (Request.Form["ProductSearch[companyname]"] != "")
+                            {
+                                sql = sql + " And Companyname Like '%" + Request.Form["ProductSearch[companyname]"] + "%'";
+                            }
+                            if (Request.Form["ProductSearch[firstname]"] != "")
+                            {
+                                sql = sql + " And Firstname Like '%" + Request.Form["ProductSearch[firstname]"] + "%'";
+                            }
+                            if (Request.Form["ProductSearch[lastname]"] != "")
+                            {
+                                sql = sql + " And Lastname Like '%" + Request.Form["ProductSearch[lastname]"] + "%'";
+                            }
+
+                            oCustomer.oCommand = new System.Data.SqlClient.SqlCommand(sql);
+                            dt = oCustomer.FillDataTable(oCustomer.oCommand);
+                        }
+                        else
+                        {
+                            dt = oCustomer.SelectAll();
+                        }
+
+                    %>
+                    <% 
+                        //Customer oCustomer = new Customer();
+                        //DataTable dt = oCustomer.SelectAll();
                     %>
                     <%for (int i = 0; i < dt.Rows.Count; i++)
                         {%>

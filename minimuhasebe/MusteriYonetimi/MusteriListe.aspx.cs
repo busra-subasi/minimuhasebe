@@ -12,4 +12,9 @@ public partial class MusteriYonetimi_MusteriListe : System.Web.UI.Page
     {
 
     }
+
+    protected void btnrefresh_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("MusteriListe.aspx");
+    }
 }

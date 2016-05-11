@@ -50,13 +50,48 @@
                         <td>
                             <input type="text" class="form-control" name="ProductSearch[Decription]" disabled="disabled">
                         </td>
-                        <td>&nbsp;</td>
+                        <td style="min-width:110px;">
+                            <button type="submit" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-search"></i> 
+                            </button>
+                            &nbsp;<asp:LinkButton ID="btnrefresh" runat="server" class="btn btn-primary" OnClick="btnrefresh_Click" ><i class =" glyphicon glyphicon-zoom-out"></i></asp:LinkButton>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
-                    <% 
+                     <% 
+                        DataTable dt;
                         Product oProduct = new Product();
-                        DataTable dt = oProduct.SelectAll();
+                        if (Request.RequestType == "POST")
+                        {
+                            string sql = "select * from Product where 1=1 ";
+                            if (Request.Form["ProductSearch[name]"] != "")
+                            {
+                                sql = sql + " And Name Like '%" + Request.Form["ProductSearch[name]"] + "%'";
+                            }
+                            if (Request.Form["ProductSearch[Quantity]"] != "")
+                            {
+                                sql = sql + " And Quantity =" + Request.Form["ProductSearch[Quantity]"] + "";
+                            }
+                            if (Request.Form["ProductSearch[tax_rate]"] != "")
+                            {
+                                sql = sql + " And Tax_Rate =" + Request.Form["ProductSearch[tax_rate]"].Replace(",", ".") + "";
+                            }
+                            if (Request.Form["ProductSearch[price]"] != "")
+                            {
+                                sql = sql + " And Price =" + Request.Form["ProductSearch[price]"].Replace(",", ".") + "";
+                            }
+
+                            oProduct.oCommand = new System.Data.SqlClient.SqlCommand(sql);
+
+                            dt = oProduct.FillDataTable(oProduct.oCommand);
+                           
+                        }
+                        else
+                        {
+                            dt = oProduct.SelectAll();
+                        }
+
                     %>
                     <%for (int i = 0; i < dt.Rows.Count; i++)
                         {%>

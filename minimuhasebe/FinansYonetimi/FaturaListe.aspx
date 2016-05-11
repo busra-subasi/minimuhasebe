@@ -39,10 +39,10 @@
                         <td>
                             <input type="text" class="form-control" name="SalesInvoiceSearch[companyName]"></td>
                         <td>
-                            <input type="text" class="form-control" name="SalesInvoiceSearch[companyName]"></td>
+                            <input type="text" class="form-control" name="SalesInvoiceSearch[firstname]"></td>
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="SalesInvoiceSearch[companyName]"></td>
+                            <input type="text" class="form-control" name="SalesInvoiceSearch[create_at]"></td>
                         </td>
                         <td>
                             <input type="text"  class="form-control hasDatepicker" disabled="disabled">
@@ -51,8 +51,14 @@
                             <input type="text" class="form-control hasDatepicker" disabled="disabled">
                         </td>
                         <td>
-                            <input type="text"  class="form-control hasDatepicker" disabled="disabled"></td>
-                        <td>&nbsp;</td>
+                            <input type="text"  class="form-control hasDatepicker" disabled="disabled">
+                        </td>
+                       <td style="min-width:110px;">
+                            <button type="submit" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-search"></i> 
+                            </button>
+                            &nbsp;<asp:LinkButton ID="btnrefresh" runat="server" class="btn btn-primary" OnClick="btnrefresh_Click" ><i class =" glyphicon glyphicon-zoom-out"></i></asp:LinkButton>
+                        </td>
 
                     </tr>
                 </thead>
@@ -63,8 +69,25 @@
                         sql = sql + "  from   SalesInvoice p";
                         sql = sql + "  INNER  JOIN Customer c ON p.Id_Customer=c.Id ";
                         sql = sql + "  INNER  JOIN Users    u ON p.Id_User_Create=u.Id ";
-                        oSales.oCommand = new SqlCommand(sql);
-                        oSales.oDataTable = oSales.FillDataTable(oSales.oCommand);
+
+                         if (Request.RequestType == "POST")
+                        {
+                            sql = sql + " where 1=1 ";
+                            if (Request.Form["ProductSearch[companyname]"] != "")
+                            {
+                                sql = sql + " And c.Companyname Like '%" + Request.Form["ProductSearch[companyname]"] + "%'";
+                            }
+                            if (Request.Form["ProductSearch[firstname]"] != "")
+                            {
+                                sql = sql + " And u.Fullname Like '%" + Request.Form["ProductSearch[firstname]"] + "%'";
+                            }
+                            if (Request.Form["ProductSearch[create_at]"] != "")
+                            {
+                                sql = sql + " And p.Create_At Like '%" + Request.Form["ProductSearch[create_at]"] + "%'";
+                            }
+                        }
+                         oSales.oCommand = new SqlCommand(sql);
+                         oSales.oDataTable = oSales.FillDataTable(oSales.oCommand);
 
                         for (int i = 0; i < oSales.oDataTable.Rows.Count; i++)
                         {

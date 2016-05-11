@@ -24,7 +24,7 @@ public partial class FinansYonetimi_Ajax : System.Web.UI.Page
 
                 if (dt.oDataReader.Read())
                 {
-                    //{"id_product":7,"tax_office":"office","tax_number":1231231}
+                    //{"id_customer":7,"tax_office":"elazığ vergi bürosu","tax_number":1231231}
                     Response.Write(dt.oDataReader["Id"] + ":" + dt.oDataReader["Tax_Office"] + ":" + dt.oDataReader["Tax_Number"]);
                 }
             }

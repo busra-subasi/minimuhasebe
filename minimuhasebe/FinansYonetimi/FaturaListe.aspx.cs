@@ -11,4 +11,9 @@ public partial class FinansYonetimi_FaturaListe : System.Web.UI.Page
     {
 
     }
+
+    protected void btnrefresh_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("FaturaListe.aspx");
+    }
 }

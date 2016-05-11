@@ -186,7 +186,8 @@
                                 //data: { id_product: selectedValue },
                                 dataType: "text",
                                 success: function (result) {
-                                    var resultArray = result.split(":");//{ "id_product":6,"name":"Product1","price":"120.0000","tax_rate":"0.0500"}
+                                    var resultArray = result.split(":");
+                                    //{ "id_product":6,"name":"Product1","price":"120.0000","tax_rate":"0.0500"}
                                     var id_product = resultArray[0];
                                     var name = resultArray[1];
                                     var price = parseFloat(resultArray[2].replace(",", "."));

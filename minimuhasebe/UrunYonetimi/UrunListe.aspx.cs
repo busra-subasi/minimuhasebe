@@ -22,5 +22,10 @@ public partial class UrunYonetimi_UrunListe : System.Web.UI.Page
 
 
         }
+
+    }
+    protected void btnrefresh_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("UrunListe.aspx");
     }
 }
