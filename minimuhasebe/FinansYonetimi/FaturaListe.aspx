@@ -73,17 +73,17 @@
                          if (Request.RequestType == "POST")
                         {
                             sql = sql + " where 1=1 ";
-                            if (Request.Form["ProductSearch[companyname]"] != "")
+                            if (Request.Form["SalesInvoiceSearch[companyname]"] != "")
                             {
-                                sql = sql + " And c.Companyname Like '%" + Request.Form["ProductSearch[companyname]"] + "%'";
+                                sql = sql + " And c.Companyname Like '%" + Request.Form["SalesInvoiceSearch[companyname]"] + "%'";
                             }
-                            if (Request.Form["ProductSearch[firstname]"] != "")
+                            if (Request.Form["SalesInvoiceSearch[firstname]"] != "")
                             {
-                                sql = sql + " And u.Fullname Like '%" + Request.Form["ProductSearch[firstname]"] + "%'";
+                                sql = sql + " And u.Fullname Like '%" + Request.Form["SalesInvoiceSearch[firstname]"] + "%'";
                             }
-                            if (Request.Form["ProductSearch[create_at]"] != "")
+                            if (Request.Form["SalesInvoiceSearch[create_at]"] != "")
                             {
-                                sql = sql + " And p.Create_At Like '%" + Request.Form["ProductSearch[create_at]"] + "%'";
+                                sql = sql + " And p.Create_At Like '%" + Request.Form["SalesInvoiceSearch[create_at]"] + "%'";
                             }
                         }
                          oSales.oCommand = new SqlCommand(sql);
@@ -103,7 +103,7 @@
                         <td><%=oSales.oDataTable.Rows[i]["Grand_Total"].ToString() %></td>
 
                         <td>
-                            <a href="FaturaDetay.aspx?Id=<%=oSales.oDataTable.Rows[i]["Id"].ToString() %>" title="Update">
+                            <a href="FaturaDetay.aspx?Id=<%=oSales.oDataTable.Rows[i]["Id"].ToString() %>" title="Göster">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
                         </td>

@@ -36,7 +36,8 @@ public partial class FinansYonetimi_FaturaKayit : System.Web.UI.Page
             string[] items = Request.Form["sales_invoice_item_list_form_input"].Split('/');
             for (int i = 0; i < items.Length; i++)
             {
-                string[] item = items[i].Split('-'); //// item[]/ item[] --->itemformat  id-name-quantity-price-taxrate-total-taxtotal-grandtotal/ id-name-quantity-price-taxrate-total-taxtotal-grandtotal
+                string[] item = items[i].Split('-'); //// item[]/ item[] --->itemformat  id-name-quantity-price
+                //-taxrate-total-taxtotal-grandtotal/ id-name-quantity-price-taxrate-total-taxtotal-grandtotal
 
                 SalesInvoiceItem oSalesInvoiceItem = new SalesInvoiceItem();
                 oSalesInvoiceItem.Id_Sales_Invoice = id;// fatura id

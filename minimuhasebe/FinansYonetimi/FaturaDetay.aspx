@@ -68,7 +68,7 @@
                 </tr>
 
                 <tr>
-                    <th>İşlemi Kapan Kullancı</th>
+                    <th>İşlemi Yapan Kullancı</th>
                     <td><%=reader["Fullname"] %></td>
                 </tr>
                 <tr>

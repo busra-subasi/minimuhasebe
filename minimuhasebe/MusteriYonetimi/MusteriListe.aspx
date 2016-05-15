@@ -54,17 +54,17 @@
                         if (Request.RequestType == "POST")
                         {
                             string sql = "select * from Customer where 1=1 ";
-                            if (Request.Form["ProductSearch[companyname]"] != "")
+                            if (Request.Form["CustomerSearch[companyname]"] != "")
                             {
-                                sql = sql + " And Companyname Like '%" + Request.Form["ProductSearch[companyname]"] + "%'";
+                                sql = sql + " And Companyname Like '%" + Request.Form["CustomerSearch[companyname]"] + "%'";
                             }
-                            if (Request.Form["ProductSearch[firstname]"] != "")
+                            if (Request.Form["CustomerSearch[firstname]"] != "")
                             {
-                                sql = sql + " And Firstname Like '%" + Request.Form["ProductSearch[firstname]"] + "%'";
+                                sql = sql + " And Firstname Like '%" + Request.Form["CustomerSearch[firstname]"] + "%'";
                             }
-                            if (Request.Form["ProductSearch[lastname]"] != "")
+                            if (Request.Form["CustomerSearch[lastname]"] != "")
                             {
-                                sql = sql + " And Lastname Like '%" + Request.Form["ProductSearch[lastname]"] + "%'";
+                                sql = sql + " And Lastname Like '%" + Request.Form["CustomerSearch[lastname]"] + "%'";
                             }
 
                             oCustomer.oCommand = new System.Data.SqlClient.SqlCommand(sql);

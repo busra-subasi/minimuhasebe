@@ -34,7 +34,7 @@
                 <div class="col-xs-12">
                     <div class="row" style="margin-top: 50px;">
                         <div class="col-xs-6">
-                            <img src="http://www.elaziganket.com/uploads/misas.jpg" style="height: 50px; width: 250px;">
+                            <img src="http://orhan-hoca.site/wp-content/uploads/2014/06/muhasebe-defteri.jpg" style="height: 50px; width: 250px;">
                             <br>
                             <hr>
                             <% 
